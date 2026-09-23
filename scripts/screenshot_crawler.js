@@ -221,8 +221,9 @@ async function captureScreenshots() {
       await browser.close();
     }
     if (serverProcess) {
-      serverProcess.kill();
+      serverProcess.kill('SIGTERM');
     }
+    process.exit(process.exitCode || 0);
   }
 }
 
