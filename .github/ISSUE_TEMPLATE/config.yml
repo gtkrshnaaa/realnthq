@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Vulnerability Reporting
+    url: https://github.com/gtkrshnaaa/realntoffice/security/advisories
+    about: Please report security vulnerabilities privately via GitHub Security Advisories or to security@realntoffice.org.
+  - name: Architecture & Community Discussions
+    url: https://github.com/gtkrshnaaa/realntoffice/discussions
+    about: Ask general questions, share virtual office ideas, and discuss office layouts with the community.
