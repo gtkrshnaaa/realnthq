@@ -2,7 +2,7 @@
 
 ## 1. Supported Versions
 
-We release patches and security fixes for the active major release versions of `realntoffice`.
+We release patches and security fixes for the active major release versions of `realnthq`.
 
 | Version | Supported | Security Maintenance |
 | :--- | :--- | :--- |
@@ -13,11 +13,11 @@ We release patches and security fixes for the active major release versions of `
 
 ## 2. Reporting a Vulnerability
 
-The `realntoffice` team takes the security of virtual workplace infrastructure seriously. If you discover a security vulnerability, please do NOT create a public GitHub issue.
+The `realnthq` team takes the security of virtual workplace infrastructure seriously. If you discover a security vulnerability, please do NOT create a public GitHub issue.
 
 Instead, please report vulnerabilities privately:
 1. **GitHub Security Advisory**: Navigate to the repository's "Security" tab and click "Report a vulnerability" (recommended).
-2. **Direct Maintainer Email**: Contact the security triage team at `security@realntoffice.org`.
+2. **Direct Maintainer Email**: Contact the security triage team at `security@realnthq.org`.
 
 ### What to Include in Your Report
 To help us triage and resolve the issue quickly, please include:

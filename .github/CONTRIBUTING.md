@@ -1,6 +1,6 @@
-# Contributing to realntoffice
+# Contributing to realnthq
 
-Thank you for your interest in contributing to `realntoffice`. As an open-source virtual office platform designed for teams from 2-person startups to 10,000+ member enterprises, we uphold strict architectural discipline, engineering craftsmanship, and high-standard code quality.
+Thank you for your interest in contributing to `realnthq`. As an open-source virtual office platform designed for teams from 2-person startups to 10,000+ member enterprises, we uphold strict architectural discipline, engineering craftsmanship, and high-standard code quality.
 
 Please read this document carefully before submitting issues or pull requests.
 
@@ -75,8 +75,8 @@ feat/your-feature-name (Your working branch)
 ### 3.2 Local Quickstart
 1. Clone the repository:
    ```bash
-   git clone https://github.com/gtkrshnaaa/realntoffice.git
-   cd realntoffice
+   git clone https://github.com/gtkrshnaaa/realnthq.git
+   cd realnthq
    git checkout devv
    ```
 2. Launch containerized environment:
@@ -124,4 +124,4 @@ When opening a Pull Request:
 4. Verify that zero emojis and zero em dashes are present in your code, diff, or description.
 5. Ensure your branch is rebased cleanly on the latest `origin/devv`.
 
-Thank you for helping build the future of remote work with `realntoffice`.
+Thank you for helping build the future of remote work with `realnthq`.

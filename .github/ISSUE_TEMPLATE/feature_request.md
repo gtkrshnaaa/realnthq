@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Suggest an idea, workflow improvement, or new capability for realntoffice
+about: Suggest an idea, workflow improvement, or new capability for realnthq
 title: "feat: [Short descriptive summary of feature]"
 labels: ["enhancement", "triage"]
 assignees: []

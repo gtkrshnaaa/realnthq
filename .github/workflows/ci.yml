@@ -1,4 +1,4 @@
-name: realntoffice CI
+name: realnthq CI
 
 on:
   push:
