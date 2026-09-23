@@ -2,7 +2,7 @@
 set -euo pipefail
 
 echo "=================================================="
-echo "    realntoffice Environment Health Validator"
+echo "    realnthq Environment Health Validator"
 echo "=================================================="
 
 # Check Node

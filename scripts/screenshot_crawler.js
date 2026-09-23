@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * realntoffice: Visual Preview and Screenshot Crawler
+ * realnthq: Visual Preview and Screenshot Crawler
  * Captures 1920x1080 screenshots of virtual office routes for documentation and release notes.
  */
 
@@ -19,7 +19,7 @@ const ROUTES = [
 
 async function captureScreenshots() {
   console.log('==================================================');
-  console.log('       realntoffice Screenshot Crawler');
+  console.log('       realnthq Screenshot Crawler');
   console.log('==================================================');
 
   if (!fs.existsSync(PREVIEW_DIR)) {

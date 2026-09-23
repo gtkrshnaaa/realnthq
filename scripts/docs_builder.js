@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * realntoffice: Documentation Utility Builder
+ * realnthq: Documentation Utility Builder
  * Scans markdown documentation, aggregates table of contents, and validates links.
  */
 
@@ -11,7 +11,7 @@ const DOCS_DIR = path.resolve(__dirname, '../docs');
 
 function buildDocsIndex() {
   console.log('==================================================');
-  console.log('       realntoffice Documentation Builder');
+  console.log('       realnthq Documentation Builder');
   console.log('==================================================');
 
   if (!fs.existsSync(DOCS_DIR)) {
