@@ -22,7 +22,7 @@ export default function LoginPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = '/campus';
+    window.location.href = '/office';
   };
 
   return (
@@ -143,7 +143,7 @@ export default function LoginPage() {
               href="/"
               className="text-xs text-[#5a8357] hover:underline font-medium"
             >
-              Return to Campus Dashboard
+              Return to Office Dashboard
             </Link>
           </div>
         </div>

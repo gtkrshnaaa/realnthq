@@ -43,7 +43,7 @@ export function Header({
 
   const navItems = [
     { label: 'Overview', href: '/' },
-    { label: 'Campus Grid', href: '/campus' },
+    { label: 'Office Grid', href: '/office' },
     { label: 'Meeting Rooms', href: '/rooms' },
     { label: 'Decision Logs', href: '/artifacts' },
     { label: 'Team Roster', href: '/team' },

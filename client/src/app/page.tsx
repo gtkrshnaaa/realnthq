@@ -9,7 +9,8 @@ interface OrgInfo {
   name: string;
   slug: string;
   domain: string;
-  campusName: string;
+  headquartersName?: string;
+  campusName?: string;
   activeFloorsCount: number;
   activeDesksCount: number;
   activeMembersCount: number;
@@ -20,7 +21,7 @@ export default function WelcomeLandingPage() {
     name: 'RealntHQ Dev Squad',
     slug: 'realnthq-dev-squad',
     domain: 'squad.realnthq.local',
-    campusName: 'RealntHQ Digital Campus',
+    headquartersName: 'RealntHQ Central Headquarters',
     activeFloorsCount: 3,
     activeDesksCount: 5,
     activeMembersCount: 3,
@@ -39,6 +40,8 @@ export default function WelcomeLandingPage() {
         // Retains dynamic seeded fallback state
       });
   }, []);
+
+  const hqDisplayName = org.headquartersName || org.campusName || 'RealntHQ Central Headquarters';
 
   return (
     <main className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-8">
@@ -61,11 +64,11 @@ export default function WelcomeLandingPage() {
 
         <div className="flex flex-wrap items-center justify-center gap-3.5 mt-8">
           <Link
-            href="/campus"
+            href="/office"
             className="px-6 py-3 rounded-xl bg-[#252724] hover:bg-[#3b3e39] text-white text-xs md:text-sm font-semibold shadow-sm transition-all flex items-center gap-2"
           >
             <BuildingIcon className="w-4 h-4" />
-            <span>Enter Digital Campus</span>
+            <span>Enter Virtual Office</span>
           </Link>
 
           <Link
@@ -79,8 +82,8 @@ export default function WelcomeLandingPage() {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-black/8 max-w-3xl mx-auto">
           <div className="p-3 bg-[#fbfbfa] rounded-xl border border-black/5">
-            <span className="block font-serif text-xl font-bold text-[#252724]">{org.campusName}</span>
-            <span className="text-[11px] text-[#252724]/60">Primary Campus</span>
+            <span className="block font-serif text-xl font-bold text-[#252724]">{hqDisplayName}</span>
+            <span className="text-[11px] text-[#252724]/60">Main Headquarters</span>
           </div>
           <div className="p-3 bg-[#fbfbfa] rounded-xl border border-black/5">
             <span className="block font-serif text-xl font-bold text-[#252724]">{org.activeFloorsCount} Floors</span>
@@ -106,8 +109,8 @@ export default function WelcomeLandingPage() {
           <p className="text-xs text-[#252724]/70 mt-2 leading-relaxed">
             Peripheral awareness of colleagues across departments. Output-oriented availability without keystroke logging or webcam surveillance.
           </p>
-          <Link href="/campus" className="inline-block mt-4 text-xs font-semibold text-[#5a8357] hover:underline">
-            Explore Campus Floors
+          <Link href="/office" className="inline-block mt-4 text-xs font-semibold text-[#5a8357] hover:underline">
+            Explore Office Floors
           </Link>
         </div>
 
