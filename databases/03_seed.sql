@@ -2,22 +2,22 @@
 -- realnthq: Initial Seed Data
 -- ============================================================================
 
--- 1. Organization
+-- 1. Organization (Fictitious Development Organization)
 INSERT INTO organizations (id, name, slug, domain)
-VALUES ('a0000000-0000-0000-0000-000000000001', 'Acme Global Workspace', 'acme-global', 'acme.org')
-ON CONFLICT (slug) DO NOTHING;
+VALUES ('a0000000-0000-0000-0000-000000000001', 'RealntHQ Dev Squad', 'realnthq-dev-squad', 'squad.realnthq.local')
+ON CONFLICT (slug) DO UPDATE SET name = EXCLUDED.name, domain = EXCLUDED.domain;
 
 -- 2. Users (Passwords: 'password123' bcrypt hash)
 INSERT INTO users (id, organization_id, email, password_hash, full_name, display_title, role, status, status_message)
 VALUES 
-    ('b0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001', 'admin@acme.org', '$2b$10$ep5Oq.7a7l0yUu3lGZ2EAu1h9E37.uJ3sM8lPsmv0sW6l2sYmJ4iK', 'Alex Vance', 'Head of Engineering', 'ADMIN', 'AVAILABLE', 'Reviewing PRs and architecture'),
-    ('b0000000-0000-0000-0000-000000000002', 'a0000000-0000-0000-0000-000000000001', 'sarah@acme.org', '$2b$10$ep5Oq.7a7l0yUu3lGZ2EAu1h9E37.uJ3sM8lPsmv0sW6l2sYmJ4iK', 'Sarah Connor', 'Staff Product Designer', 'MEMBER', 'DEEP_WORK', 'Design system Figma sprint'),
-    ('b0000000-0000-0000-0000-000000000003', 'a0000000-0000-0000-0000-000000000001', 'kenji@acme.org', '$2b$10$ep5Oq.7a7l0yUu3lGZ2EAu1h9E37.uJ3sM8lPsmv0sW6l2sYmJ4iK', 'Kenji Sato', 'Distributed Systems Lead', 'MEMBER', 'AVAILABLE', 'Pairing on WebRTC signaling')
+    ('b0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001', 'admin@squad.realnthq.local', '$2b$10$ep5Oq.7a7l0yUu3lGZ2EAu1h9E37.uJ3sM8lPsmv0sW6l2sYmJ4iK', 'Alex Vance', 'Head of Engineering', 'ADMIN', 'AVAILABLE', 'Reviewing PRs and architecture'),
+    ('b0000000-0000-0000-0000-000000000002', 'a0000000-0000-0000-0000-000000000001', 'sarah@squad.realnthq.local', '$2b$10$ep5Oq.7a7l0yUu3lGZ2EAu1h9E37.uJ3sM8lPsmv0sW6l2sYmJ4iK', 'Sarah Connor', 'Staff Product Designer', 'MEMBER', 'DEEP_WORK', 'Design system Figma sprint'),
+    ('b0000000-0000-0000-0000-000000000003', 'a0000000-0000-0000-0000-000000000001', 'kenji@squad.realnthq.local', '$2b$10$ep5Oq.7a7l0yUu3lGZ2EAu1h9E37.uJ3sM8lPsmv0sW6l2sYmJ4iK', 'Kenji Sato', 'Distributed Systems Lead', 'MEMBER', 'AVAILABLE', 'Pairing on WebRTC signaling')
 ON CONFLICT (email) DO NOTHING;
 
 -- 3. Campus
 INSERT INTO campuses (id, organization_id, name, slug, timezone)
-VALUES ('c0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001', 'Digital Headquarters', 'hq-main', 'UTC')
+VALUES ('c0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001', 'RealntHQ Digital Campus', 'hq-main', 'UTC')
 ON CONFLICT DO NOTHING;
 
 -- 4. Floors
