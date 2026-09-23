@@ -25,15 +25,23 @@ const BASE_URL = process.env.CLIENT_URL || 'http://localhost:3000';
 
 const ROUTES = [
   {
-    name: '01-virtual-campus',
+    name: '01-landing-page',
     route: '/',
+    title: 'Welcome Landing Page & Headquarters Hub',
+    description:
+      'Dedicated self-hosted welcoming portal greeting team members of the host organization (e.g. RealntHQ Dev Squad) with dynamic company data, campus statistics, and direct action gateways powered by Realnt HQ.',
+    components: ['Header', 'WelcomeBanner', 'DynamicOrgBadge', 'CampusStats', 'ActionGateways', 'FeatureHighlights'],
+  },
+  {
+    name: '02-virtual-campus',
+    route: '/campus',
     title: 'Virtual Campus Floor & Desk Grid',
     description:
       'Interactive 2D virtual office canvas featuring multi-floor selection, real-time desk claims, status tags, spatial presence radar, and ad-hoc room huddles.',
     components: ['Header', 'FloorSelector', 'CampusGrid', 'DeskTile', 'PresenceRadar', 'RoomPanel', 'StatusSelector'],
   },
   {
-    name: '02-meeting-rooms',
+    name: '03-meeting-rooms',
     route: '/rooms',
     title: 'Meeting Spaces & Huddle Hubs',
     description:
@@ -41,7 +49,7 @@ const ROUTES = [
     components: ['Header', 'ActiveHuddle', 'VideoIcon', 'MicIcon', 'UsersIcon'],
   },
   {
-    name: '03-decision-logs',
+    name: '04-decision-logs',
     route: '/artifacts',
     title: 'Decision Registers & Async Artifacts',
     description:
@@ -49,7 +57,7 @@ const ROUTES = [
     components: ['Header', 'ArtifactFilter', 'DecisionCard', 'MarkdownViewer'],
   },
   {
-    name: '04-team-directory',
+    name: '05-team-directory',
     route: '/team',
     title: 'Team Directory & Spatial Presence Roster',
     description:
@@ -57,7 +65,7 @@ const ROUTES = [
     components: ['Header', 'TeamCard', 'StatusBadge', 'KnockTrigger', 'KnockModal'],
   },
   {
-    name: '05-workspace-login',
+    name: '06-workspace-login',
     route: '/login',
     title: 'Single Sign-On & Authentication Portal',
     description:
