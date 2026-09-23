@@ -1,4 +1,4 @@
-# realntoffice
+# realnthq
 
 An adaptive open-source virtual office platform engineered for low-scale to high-scale organizations conducting fully remote workplace operations.
 
@@ -6,7 +6,7 @@ An adaptive open-source virtual office platform engineered for low-scale to high
 
 ## 1. Overview and Core Vision
 
-`realntoffice` bridges the gap between chaotic video call fatigue and disconnected asynchronous isolation. It provides remote teams with fluid spatial presence, ambient awareness, instant ad-hoc collaboration ("soft knocks"), and persistent async meeting logs without invasive employee surveillance or keylogger spyware.
+`realnthq` bridges the gap between chaotic video call fatigue and disconnected asynchronous isolation. It provides remote teams with fluid spatial presence, ambient awareness, instant ad-hoc collaboration ("soft knocks"), and persistent async meeting logs without invasive employee surveillance or keylogger spyware.
 
 ### Scale Continuum
 * **Micro Scale (1 to 15 members)**: Single flat floor, unified open desks, peer-to-peer WebRTC audio/video mesh.
@@ -20,7 +20,7 @@ An adaptive open-source virtual office platform engineered for low-scale to high
 Per strict architectural constraints, the repository root enforces a clean, modular structure:
 
 ```text
-realntoffice/
+realnthq/
 ├── README.md              # Project overview, architecture, and orchestration guides
 ├── LICENSE                # Open source MIT license
 ├── docs/                  # PRD, architectural diagrams, and pattern matrices
@@ -78,7 +78,7 @@ For the complete specification, read [docs/RIGHT_AND_ANTI_PATTERNS.md](docs/RIGH
 
 ## 5. Design System Baseline (Warm Editorial Light)
 
-`realntoffice` applies the universal **Warm Editorial Light** aesthetic:
+`realnthq` applies the universal **Warm Editorial Light** aesthetic:
 * **Canvas**: `#fbfbfa` warm bone background with alternating organic cards.
 * **Typography**: Dual-font pairing with `'Fraunces'` serif headlines and `'DM Sans'` body text.
 * **Structure**: 1px hairline borders (`border-black/8`), `rounded-2xl` cards, `rounded-xl` interactive controls.
