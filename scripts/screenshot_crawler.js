@@ -1,36 +1,186 @@
 #!/usr/bin/env node
 /**
  * realnthq: Visual Preview and Screenshot Crawler
- * Captures 1920x1080 screenshots of virtual office routes for documentation and release notes.
+ * Captures 1920x1080 screenshots of all virtual office routes,
+ * generates an archival ZIP bundle, and outputs docs/preview/allpages.md.
  */
 
 const fs = require('fs');
 const path = require('path');
-const puppeteer = require('puppeteer');
+const http = require('http');
+const { spawn, execSync } = require('child_process');
 
-const PREVIEW_DIR = path.resolve(__dirname, '../docs/preview/screenshots');
+let puppeteer;
+try {
+  puppeteer = require(path.resolve(__dirname, '../tests/node_modules/puppeteer'));
+} catch (e) {
+  puppeteer = require('puppeteer');
+}
+
+const ROOT_DIR = path.resolve(__dirname, '..');
+const PREVIEW_DIR = path.resolve(ROOT_DIR, 'docs/preview');
+const SCREENSHOTS_DIR = path.resolve(PREVIEW_DIR, 'screenshots');
+const ZIP_DIR = path.resolve(SCREENSHOTS_DIR, 'zip');
 const BASE_URL = process.env.CLIENT_URL || 'http://localhost:3000';
 
 const ROUTES = [
-  { name: '01-virtual-campus', route: '/', description: 'Virtual Campus Floor & Desk Grid' },
-  { name: '02-meeting-hub', route: '/?room=turing', description: 'Interactive Huddle Hub' },
-  { name: '03-presence-radar', route: '/?panel=presence', description: 'Spatial Presence Radar' },
+  {
+    name: '01-virtual-campus',
+    route: '/',
+    title: 'Virtual Campus Floor & Desk Grid',
+    description:
+      'Interactive 2D virtual office canvas featuring multi-floor selection, real-time desk claims, status tags, spatial presence radar, and ad-hoc room huddles.',
+    components: ['Header', 'FloorSelector', 'CampusGrid', 'DeskTile', 'PresenceRadar', 'RoomPanel', 'StatusSelector'],
+  },
+  {
+    name: '02-meeting-rooms',
+    route: '/rooms',
+    title: 'Meeting Spaces & Huddle Hubs',
+    description:
+      'Collaborative rooms supporting P2P mesh and SFU gateway signaling, capacity tracking, active meeting indicators, and instant huddle provisioning.',
+    components: ['Header', 'ActiveHuddle', 'VideoIcon', 'MicIcon', 'UsersIcon'],
+  },
+  {
+    name: '03-decision-logs',
+    route: '/artifacts',
+    title: 'Decision Registers & Async Artifacts',
+    description:
+      'Persistent room-level markdown records, architectural decisions, and daily standup journals ensuring alignment across asynchronous and distributed team members.',
+    components: ['Header', 'ArtifactFilter', 'DecisionCard', 'MarkdownViewer'],
+  },
+  {
+    name: '04-team-directory',
+    route: '/team',
+    title: 'Team Directory & Spatial Presence Roster',
+    description:
+      'Comprehensive organizational roster showing member roles, desk locations, live availability indicators, and direct one-click soft knock collaboration.',
+    components: ['Header', 'TeamCard', 'StatusBadge', 'KnockTrigger', 'KnockModal'],
+  },
+  {
+    name: '05-workspace-login',
+    route: '/login',
+    title: 'Single Sign-On & Authentication Portal',
+    description:
+      'Enterprise authentication gate supporting Okta / SAML SSO, Google Workspace, GitHub Org, and direct magic-link login with zero-surveillance compliance.',
+    components: ['LoginForm', 'SSOButtons', 'CampusBranding', 'PrivacyNotice'],
+  },
 ];
+
+function checkServerUp(url) {
+  return new Promise((resolve) => {
+    const req = http.get(url, (res) => {
+      resolve(res.statusCode >= 200 && res.statusCode < 400);
+    });
+    req.on('error', () => resolve(false));
+    req.setTimeout(2000, () => {
+      req.destroy();
+      resolve(false);
+    });
+  });
+}
+
+async function waitForServer(url, maxAttempts = 30) {
+  for (let i = 0; i < maxAttempts; i++) {
+    const isUp = await checkServerUp(url);
+    if (isUp) return true;
+    await new Promise((r) => setTimeout(r, 1000));
+  }
+  return false;
+}
+
+function generateAllPagesMarkdown(routes, screenshotsDir) {
+  const lines = [
+    '# realnthq: Visual Interface Catalogue',
+    '',
+    '**Document Purpose:** Complete visual preview archive and interface index for the `realnthq` virtual office platform.',
+    '**Design System Baseline:** Warm Editorial Light (`#fbfbfa` canvas, Fraunces serif, DM Sans UI, solid obsidian actions, soft sage accents).',
+    '**Viewport Resolution:** 1920x1080 (16:9 Desktop Full-Fidelity).',
+    '',
+    '---',
+    '',
+    '## Archival Package Download',
+    '',
+    '* **Complete Screenshot Bundle (ZIP)**: [Download realnthq.zip](./screenshots/zip/realnthq.zip)',
+    '',
+    '---',
+    '',
+    '## Table of Contents',
+    '',
+  ];
+
+  routes.forEach((r, idx) => {
+    const num = String(idx + 1).padStart(2, '0');
+    lines.push(`* [${num}. ${r.title}](#${num}-${r.name.substring(3)})`);
+  });
+
+  lines.push('', '---', '');
+
+  routes.forEach((r, idx) => {
+    const num = String(idx + 1).padStart(2, '0');
+    const slug = r.name.substring(3);
+    const filename = `${r.name}.jpg`;
+
+    lines.push(`## ${num}. ${r.title}`);
+    lines.push('');
+    lines.push(`* **Route:** \`${r.route}\` ([http://localhost:3000${r.route}](http://localhost:3000${r.route}))`);
+    lines.push(`* **File:** [\`docs/preview/screenshots/${filename}\`](./screenshots/${filename})`);
+    lines.push(`* **Core Components:** ${r.components.map((c) => `\`${c}\``).join(', ')}`);
+    lines.push('');
+    lines.push(`![${r.title}](./screenshots/${filename})`);
+    lines.push('');
+    lines.push(`> **Architecture & UI Note**: ${r.description}`);
+    lines.push('');
+    lines.push('---');
+    lines.push('');
+  });
+
+  return lines.join('\n');
+}
 
 async function captureScreenshots() {
   console.log('==================================================');
-  console.log('       realnthq Screenshot Crawler');
+  console.log('       realnthq Visual Preview Crawler');
   console.log('==================================================');
 
-  if (!fs.existsSync(PREVIEW_DIR)) {
-    fs.mkdirSync(PREVIEW_DIR, { recursive: true });
+  if (!fs.existsSync(SCREENSHOTS_DIR)) {
+    fs.mkdirSync(SCREENSHOTS_DIR, { recursive: true });
+  }
+  if (!fs.existsSync(ZIP_DIR)) {
+    fs.mkdirSync(ZIP_DIR, { recursive: true });
+  }
+
+  let serverProcess = null;
+  const isAlreadyUp = await checkServerUp(BASE_URL);
+
+  if (!isAlreadyUp) {
+    console.log(`[*] Web server not active on ${BASE_URL}. Launching Next.js client...`);
+    serverProcess = spawn('npm', ['run', 'start'], {
+      cwd: path.resolve(ROOT_DIR, 'client'),
+      stdio: 'pipe',
+      detached: false,
+    });
+
+    const isReady = await waitForServer(BASE_URL, 20);
+    if (!isReady) {
+      console.error('[x] Failed to reach client server at ' + BASE_URL);
+      if (serverProcess) serverProcess.kill();
+      process.exit(1);
+    }
+    console.log(`[OK] Client server is ready at ${BASE_URL}.`);
+  } else {
+    console.log(`[OK] Existing client server detected at ${BASE_URL}.`);
   }
 
   let browser;
   try {
+    const executablePath = fs.existsSync('/usr/bin/google-chrome')
+      ? '/usr/bin/google-chrome'
+      : (fs.existsSync('/usr/bin/chromium-browser') ? '/usr/bin/chromium-browser' : undefined);
+
     browser = await puppeteer.launch({
       headless: 'new',
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      executablePath,
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
     });
 
     const page = await browser.newPage();
@@ -38,28 +188,40 @@ async function captureScreenshots() {
 
     for (const item of ROUTES) {
       const target = `${BASE_URL}${item.route}`;
-      const dest = path.join(PREVIEW_DIR, `${item.name}.jpg`);
-      console.log(`[*] Capturing: ${item.description} -> ${target}`);
+      const dest = path.join(SCREENSHOTS_DIR, `${item.name}.jpg`);
+      console.log(`[*] Capturing: ${item.title} -> ${target}`);
 
-      try {
-        await page.goto(target, { waitUntil: 'networkidle0', timeout: 5000 });
-        await page.screenshot({ path: dest, type: 'jpeg', quality: 80 });
-        console.log(`    [OK] Saved to ${dest}`);
-      } catch (err) {
-        console.log(`    [!] Could not connect to live daemon at ${target}. Generating placeholder manifest.`);
-        fs.writeFileSync(
-          path.join(PREVIEW_DIR, `${item.name}.manifest.json`),
-          JSON.stringify({ name: item.name, target, timestamp: new Date().toISOString() }, null, 2),
-        );
-      }
+      await page.goto(target, { waitUntil: ['networkidle0', 'domcontentloaded'], timeout: 15000 });
+      await new Promise((r) => setTimeout(r, 600));
+      await page.screenshot({ path: dest, type: 'jpeg', quality: 80 });
+      console.log(`    [OK] Saved to docs/preview/screenshots/${item.name}.jpg`);
     }
 
-    console.log('[OK] Screenshot crawler pass complete.');
+    // Archival ZIP packaging
+    console.log('[*] Generating archival ZIP bundle...');
+    const zipFile = path.join(ZIP_DIR, 'realnthq.zip');
+    execSync(`cd "${SCREENSHOTS_DIR}" && zip -j "${zipFile}" *.jpg`, { stdio: 'inherit' });
+    console.log(`    [OK] Saved archive to docs/preview/screenshots/zip/realnthq.zip`);
+
+    // Generate docs/preview/allpages.md
+    console.log('[*] Generating docs/preview/allpages.md catalogue...');
+    const allPagesContent = generateAllPagesMarkdown(ROUTES, SCREENSHOTS_DIR);
+    const allPagesPath = path.join(PREVIEW_DIR, 'allpages.md');
+    fs.writeFileSync(allPagesPath, allPagesContent, 'utf-8');
+    console.log(`    [OK] Successfully wrote: ${allPagesPath}`);
+
+    console.log('==================================================');
+    console.log('[OK] Visual preview pipeline completed successfully.');
+    console.log('==================================================');
   } catch (e) {
     console.error(`[x] Screenshot crawler failed: ${e.message}`);
+    process.exitCode = 1;
   } finally {
     if (browser) {
       await browser.close();
+    }
+    if (serverProcess) {
+      serverProcess.kill();
     }
   }
 }
