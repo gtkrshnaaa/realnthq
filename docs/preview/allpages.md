@@ -15,7 +15,7 @@
 ## Table of Contents
 
 * [01. Welcome Landing Page & Headquarters Hub](#01-landing-page)
-* [02. Virtual Campus Floor & Desk Grid](#02-virtual-campus)
+* [02. Virtual Office Floor & Desk Grid](#02-office-grid)
 * [03. Meeting Spaces & Huddle Hubs](#03-meeting-rooms)
 * [04. Decision Registers & Async Artifacts](#04-decision-logs)
 * [05. Team Directory & Spatial Presence Roster](#05-team-directory)
@@ -27,21 +27,21 @@
 
 * **Route:** `/` ([http://localhost:3000/](http://localhost:3000/))
 * **File:** [`docs/preview/screenshots/01-landing-page.jpg`](./screenshots/01-landing-page.jpg)
-* **Core Components:** `Header`, `WelcomeBanner`, `DynamicOrgBadge`, `CampusStats`, `ActionGateways`, `FeatureHighlights`
+* **Core Components:** `Header`, `WelcomeBanner`, `DynamicOrgBadge`, `OfficeStats`, `ActionGateways`, `FeatureHighlights`
 
 ![Welcome Landing Page & Headquarters Hub](./screenshots/01-landing-page.jpg)
 
-> **Architecture & UI Note**: Dedicated self-hosted welcoming portal greeting team members of the host organization (e.g. RealntHQ Dev Squad) with dynamic company data, campus statistics, and direct action gateways powered by Realnt HQ.
+> **Architecture & UI Note**: Dedicated self-hosted welcoming portal greeting team members of the host organization (e.g. RealntHQ Dev Squad) with dynamic company data, office statistics, and direct action gateways powered by Realnt HQ.
 
 ---
 
-## 02. Virtual Campus Floor & Desk Grid
+## 02. Virtual Office Floor & Desk Grid
 
-* **Route:** `/campus` ([http://localhost:3000/campus](http://localhost:3000/campus))
-* **File:** [`docs/preview/screenshots/02-virtual-campus.jpg`](./screenshots/02-virtual-campus.jpg)
-* **Core Components:** `Header`, `FloorSelector`, `CampusGrid`, `DeskTile`, `PresenceRadar`, `RoomPanel`, `StatusSelector`
+* **Route:** `/office` ([http://localhost:3000/office](http://localhost:3000/office))
+* **File:** [`docs/preview/screenshots/02-office-grid.jpg`](./screenshots/02-office-grid.jpg)
+* **Core Components:** `Header`, `FloorSelector`, `OfficeGrid`, `DeskTile`, `PresenceRadar`, `RoomPanel`, `StatusSelector`
 
-![Virtual Campus Floor & Desk Grid](./screenshots/02-virtual-campus.jpg)
+![Virtual Office Floor & Desk Grid](./screenshots/02-office-grid.jpg)
 
 > **Architecture & UI Note**: Interactive 2D virtual office canvas featuring multi-floor selection, real-time desk claims, status tags, spatial presence radar, and ad-hoc room huddles.
 
@@ -87,7 +87,7 @@
 
 * **Route:** `/login` ([http://localhost:3000/login](http://localhost:3000/login))
 * **File:** [`docs/preview/screenshots/06-workspace-login.jpg`](./screenshots/06-workspace-login.jpg)
-* **Core Components:** `LoginForm`, `SSOButtons`, `CampusBranding`, `PrivacyNotice`
+* **Core Components:** `LoginForm`, `SSOButtons`, `OfficeBranding`, `PrivacyNotice`
 
 ![Single Sign-On & Authentication Portal](./screenshots/06-workspace-login.jpg)
 
