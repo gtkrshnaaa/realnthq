@@ -6,7 +6,7 @@ This directory contains SQL schemas, DDL declarations, and seed datasets for the
 ## File Structure
 - `01_init.sql`: Sets timezone to UTC and enables required PostgreSQL extensions (`uuid-ossp`, `pgcrypto`, `citext`).
 - `02_tables.sql`: Relational table definitions, constraints, checks, foreign keys, and indexes.
-- `03_seed.sql`: Initial seed data providing an organization, campus floors, engineering pods, meeting rooms, and desk assignments.
+- `03_seed.sql`: Initial seed data providing an organization, headquarters floors, engineering pods, meeting rooms, and desk assignments.
 
 ## Manual Migration / Execution
 To run these files directly against a target PostgreSQL instance:

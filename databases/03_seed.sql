@@ -15,13 +15,13 @@ VALUES
     ('b0000000-0000-0000-0000-000000000003', 'a0000000-0000-0000-0000-000000000001', 'kenji@squad.realnthq.local', '$2b$10$ep5Oq.7a7l0yUu3lGZ2EAu1h9E37.uJ3sM8lPsmv0sW6l2sYmJ4iK', 'Kenji Sato', 'Distributed Systems Lead', 'MEMBER', 'AVAILABLE', 'Pairing on WebRTC signaling')
 ON CONFLICT (email) DO NOTHING;
 
--- 3. Campus
-INSERT INTO campuses (id, organization_id, name, slug, timezone)
-VALUES ('c0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001', 'RealntHQ Digital Campus', 'hq-main', 'UTC')
+-- 3. Headquarters
+INSERT INTO headquarters (id, organization_id, name, slug, timezone)
+VALUES ('c0000000-0000-0000-0000-000000000001', 'a0000000-0000-0000-0000-000000000001', 'RealntHQ Central Headquarters', 'hq-main', 'UTC')
 ON CONFLICT DO NOTHING;
 
 -- 4. Floors
-INSERT INTO floors (id, campus_id, floor_number, name, grid_width, grid_height)
+INSERT INTO floors (id, headquarters_id, floor_number, name, grid_width, grid_height)
 VALUES 
     ('d0000000-0000-0000-0000-000000000001', 'c0000000-0000-0000-0000-000000000001', 1, 'Lobby & Community Commons', 40, 30),
     ('d0000000-0000-0000-0000-000000000002', 'c0000000-0000-0000-0000-000000000001', 2, 'Engineering & Product Floor', 40, 30),
@@ -60,7 +60,7 @@ VALUES (
     'f0000000-0000-0000-0000-000000000001',
     'b0000000-0000-0000-0000-000000000001',
     'Sprint 42 Architecture Decisions',
-    '## Decision Register: Real-Time Quadtree Sharding\n\n- **Context**: Scaling past 1,000 active participants on campus 1.\n- **Decision**: Adopt quadtree room-level spatial bucketing.\n- **Impact**: Network egress reduced by 84%.',
+    '## Decision Register: Real-Time Quadtree Sharding\n\n- **Context**: Scaling past 1,000 active participants on floor 1.\n- **Decision**: Adopt quadtree room-level spatial bucketing.\n- **Impact**: Network egress reduced by 84%.',
     'DECISION_LOG'
 )
 ON CONFLICT DO NOTHING;

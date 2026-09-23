@@ -30,28 +30,28 @@ CREATE TABLE IF NOT EXISTS users (
     updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
--- Campuses
-CREATE TABLE IF NOT EXISTS campuses (
+-- Headquarters / Office Locations
+CREATE TABLE IF NOT EXISTS headquarters (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     organization_id UUID NOT NULL REFERENCES organizations(id) ON DELETE CASCADE,
     name VARCHAR(120) NOT NULL,
     slug VARCHAR(64) NOT NULL,
     timezone VARCHAR(64) DEFAULT 'UTC',
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT uq_campus_slug_per_org UNIQUE (organization_id, slug)
+    CONSTRAINT uq_headquarters_slug_per_org UNIQUE (organization_id, slug)
 );
 
 -- Floors
 CREATE TABLE IF NOT EXISTS floors (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    campus_id UUID NOT NULL REFERENCES campuses(id) ON DELETE CASCADE,
+    headquarters_id UUID NOT NULL REFERENCES headquarters(id) ON DELETE CASCADE,
     floor_number INT NOT NULL,
     name VARCHAR(120) NOT NULL,
     grid_width INT DEFAULT 40,
     grid_height INT DEFAULT 30,
     layout_config JSONB DEFAULT '{}'::jsonb,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT uq_floor_number_per_campus UNIQUE (campus_id, floor_number)
+    CONSTRAINT uq_floor_number_per_hq UNIQUE (headquarters_id, floor_number)
 );
 
 -- Zones
