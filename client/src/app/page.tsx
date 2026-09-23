@@ -1,231 +1,142 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Header } from '@/components/navigation/header';
-import { FloorSelector } from '@/components/campus/floor_selector';
-import { CampusGrid } from '@/components/campus/campus_grid';
-import { PresenceRadar } from '@/components/presence/presence_radar';
-import { KnockModal } from '@/components/presence/knock_modal';
-import { RoomPanel } from '@/components/rooms/room_panel';
-import { ActiveHuddle } from '@/components/rooms/active_huddle';
-import {
-  UserProfile,
-  FloorInfo,
-  DeskData,
-  RoomData,
-  UserPresenceStatus,
-  KnockNotification,
-} from '@/types/office.types';
+import { BuildingIcon, UsersIcon, RadioIcon, VideoIcon } from '@/components/icons/icons';
 
-export default function OfficeDashboard() {
-  const [currentUser, setCurrentUser] = useState<UserProfile>({
-    id: 'b0000000-0000-0000-0000-000000000001',
-    email: 'admin@acme.org',
-    fullName: 'Alex Vance',
-    displayTitle: 'Head of Engineering',
-    status: 'AVAILABLE',
-    statusMessage: 'Reviewing PRs and architecture',
-    floorId: 'floor-2',
-    deskId: 'desk-1',
+interface OrgInfo {
+  name: string;
+  slug: string;
+  domain: string;
+  campusName: string;
+  activeFloorsCount: number;
+  activeDesksCount: number;
+  activeMembersCount: number;
+}
+
+export default function WelcomeLandingPage() {
+  const [org, setOrg] = useState<OrgInfo>({
+    name: 'RealntHQ Dev Squad',
+    slug: 'realnthq-dev-squad',
+    domain: 'squad.realnthq.local',
+    campusName: 'RealntHQ Digital Campus',
+    activeFloorsCount: 3,
+    activeDesksCount: 5,
+    activeMembersCount: 3,
   });
 
-  const [floors] = useState<FloorInfo[]>([
-    { id: 'floor-1', floorNumber: 1, name: 'Lobby & Community Commons', activeOccupantsCount: 4 },
-    { id: 'floor-2', floorNumber: 2, name: 'Engineering & Product Hub', activeOccupantsCount: 12 },
-    { id: 'floor-3', floorNumber: 3, name: 'Executive & Focus Library', activeOccupantsCount: 6 },
-  ]);
-
-  const [activeFloorId, setActiveFloorId] = useState('floor-2');
-
-  const [desks, setDesks] = useState<DeskData[]>([
-    {
-      id: 'desk-1',
-      floorId: 'floor-2',
-      deskLabel: 'ENG-01',
-      posX: 4,
-      posY: 4,
-      deskType: 'DEDICATED',
-      currentOccupant: currentUser,
-    },
-    {
-      id: 'desk-2',
-      floorId: 'floor-2',
-      deskLabel: 'ENG-02',
-      posX: 6,
-      posY: 4,
-      deskType: 'DEDICATED',
-      currentOccupant: {
-        id: 'user-2',
-        email: 'sarah@acme.org',
-        fullName: 'Sarah Connor',
-        displayTitle: 'Staff Product Designer',
-        status: 'DEEP_WORK',
-      },
-    },
-    {
-      id: 'desk-3',
-      floorId: 'floor-2',
-      deskLabel: 'ENG-03',
-      posX: 8,
-      posY: 4,
-      deskType: 'DEDICATED',
-      currentOccupant: {
-        id: 'user-3',
-        email: 'kenji@acme.org',
-        fullName: 'Kenji Sato',
-        displayTitle: 'Distributed Systems Lead',
-        status: 'AVAILABLE',
-      },
-    },
-    {
-      id: 'desk-4',
-      floorId: 'floor-2',
-      deskLabel: 'HOT-01',
-      posX: 4,
-      posY: 8,
-      deskType: 'HOT_DESK',
-    },
-    {
-      id: 'desk-5',
-      floorId: 'floor-2',
-      deskLabel: 'HOT-02',
-      posX: 6,
-      posY: 8,
-      deskType: 'HOT_DESK',
-    },
-    {
-      id: 'desk-6',
-      floorId: 'floor-2',
-      deskLabel: 'HOT-03',
-      posX: 8,
-      posY: 8,
-      deskType: 'HOT_DESK',
-    },
-  ]);
-
-  const [rooms] = useState<RoomData[]>([
-    {
-      id: 'room-1',
-      floorId: 'floor-2',
-      name: 'Turing War Room',
-      roomType: 'HUDDLE',
-      capacity: 6,
-      occupantCount: 2,
-    },
-    {
-      id: 'room-2',
-      floorId: 'floor-2',
-      name: 'Lovelace Sync Hub',
-      roomType: 'CONFERENCE',
-      capacity: 12,
-      occupantCount: 0,
-    },
-    {
-      id: 'room-3',
-      floorId: 'floor-2',
-      name: 'Virtual Coffee Bar',
-      roomType: 'WATERCOOLER',
-      capacity: 20,
-      occupantCount: 3,
-    },
-  ]);
-
-  const [activeHuddleRoom, setActiveHuddleRoom] = useState<RoomData | null>(null);
-  const [targetKnockUser, setTargetKnockUser] = useState<UserProfile | null>(null);
-  const [incomingKnock, setIncomingKnock] = useState<KnockNotification | null>(null);
-
-  const handleClaimDesk = (deskId: string) => {
-    setDesks((prev) =>
-      prev.map((d) => {
-        if (d.id === deskId) return { ...d, currentOccupant: currentUser };
-        if (d.currentOccupant?.id === currentUser.id) return { ...d, currentOccupant: undefined };
-        return d;
-      }),
-    );
-    setCurrentUser((prev) => ({ ...prev, deskId }));
-  };
-
-  const handleReleaseDesk = (deskId: string) => {
-    setDesks((prev) =>
-      prev.map((d) => (d.id === deskId ? { ...d, currentOccupant: undefined } : d)),
-    );
-    setCurrentUser((prev) => ({ ...prev, deskId: undefined }));
-  };
-
-  const handleUpdateStatus = (status: UserPresenceStatus, message?: string) => {
-    setCurrentUser((prev) => ({ ...prev, status, statusMessage: message }));
-  };
+  useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+    fetch(`${apiUrl}/organization`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data && data.name) {
+          setOrg(data);
+        }
+      })
+      .catch(() => {
+        // Retains dynamic seeded fallback state
+      });
+  }, []);
 
   return (
-    <main className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
-      <Header
-        currentUser={currentUser}
-        activePath="/"
-        onUpdateStatus={handleUpdateStatus}
-      />
+    <main className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-8">
+      <Header activePath="/" />
 
-      <section>
-        <FloorSelector
-          floors={floors}
-          activeFloorId={activeFloorId}
-          onSelectFloor={setActiveFloorId}
-        />
-      </section>
-
-      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          <CampusGrid
-            floorName="Engineering & Product Hub (Floor 2)"
-            desks={desks}
-            currentUser={currentUser}
-            onClaimDesk={handleClaimDesk}
-            onReleaseDesk={handleReleaseDesk}
-            onKnockUser={setTargetKnockUser}
-          />
+      <section className="bg-white/80 backdrop-blur-sm rounded-2xl border border-black/8 p-8 md:p-12 shadow-sm text-center relative overflow-hidden">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#eef2ec] border border-[#5a8357]/20 text-[#5a8357] text-xs font-mono mb-6">
+          <span className="w-2 h-2 rounded-full bg-[#5a8357] animate-pulse" />
+          <span>Self-Hosted Instance - {org.name}</span>
         </div>
 
-        <div className="space-y-6">
-          <PresenceRadar
-            occupants={[
-              currentUser,
-              desks[1].currentOccupant!,
-              desks[2].currentOccupant!,
-            ]}
-            currentUserId={currentUser.id}
-            onKnockUser={setTargetKnockUser}
-          />
+        <h1 className="font-serif text-3xl md:text-5xl font-bold tracking-tight text-[#252724] max-w-3xl mx-auto leading-tight">
+          Welcome to {org.name} Digital Headquarters
+        </h1>
 
-          <RoomPanel
-            rooms={rooms}
-            onJoinRoom={(room) => setActiveHuddleRoom(room)}
-          />
+        <p className="text-sm md:text-base text-[#252724]/70 max-w-2xl mx-auto mt-4 leading-relaxed">
+          Your private, self-hosted virtual office powered by <span className="font-semibold text-[#252724]">Realnt HQ</span>.
+          Experience fluid spatial awareness, spontaneous soft knocks, and persistent decision records without invasive surveillance.
+        </p>
+
+        <div className="flex flex-wrap items-center justify-center gap-3.5 mt-8">
+          <Link
+            href="/campus"
+            className="px-6 py-3 rounded-xl bg-[#252724] hover:bg-[#3b3e39] text-white text-xs md:text-sm font-semibold shadow-sm transition-all flex items-center gap-2"
+          >
+            <BuildingIcon className="w-4 h-4" />
+            <span>Enter Digital Campus</span>
+          </Link>
+
+          <Link
+            href="/rooms"
+            className="px-6 py-3 rounded-xl bg-white border border-black/10 hover:border-black/25 text-[#252724] text-xs md:text-sm font-medium transition-all flex items-center gap-2 shadow-xs"
+          >
+            <VideoIcon className="w-4 h-4 text-[#5a8357]" />
+            <span>Join Meeting Rooms</span>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-black/8 max-w-3xl mx-auto">
+          <div className="p-3 bg-[#fbfbfa] rounded-xl border border-black/5">
+            <span className="block font-serif text-xl font-bold text-[#252724]">{org.campusName}</span>
+            <span className="text-[11px] text-[#252724]/60">Primary Campus</span>
+          </div>
+          <div className="p-3 bg-[#fbfbfa] rounded-xl border border-black/5">
+            <span className="block font-serif text-xl font-bold text-[#252724]">{org.activeFloorsCount} Floors</span>
+            <span className="text-[11px] text-[#252724]/60">Active Office Levels</span>
+          </div>
+          <div className="p-3 bg-[#fbfbfa] rounded-xl border border-black/5">
+            <span className="block font-serif text-xl font-bold text-[#252724]">{org.activeDesksCount} Desks</span>
+            <span className="text-[11px] text-[#252724]/60">Hot & Dedicated Desks</span>
+          </div>
+          <div className="p-3 bg-[#fbfbfa] rounded-xl border border-black/5">
+            <span className="block font-serif text-xl font-bold text-[#252724]">{org.activeMembersCount} Members</span>
+            <span className="text-[11px] text-[#252724]/60">Seeded Team Roster</span>
+          </div>
         </div>
       </section>
 
-      {activeHuddleRoom && (
-        <ActiveHuddle
-          room={activeHuddleRoom}
-          currentUser={currentUser}
-          onLeave={() => setActiveHuddleRoom(null)}
-        />
-      )}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="p-6 rounded-2xl bg-white/80 border border-black/8 shadow-sm">
+          <div className="w-10 h-10 rounded-xl bg-[#eef2ec] text-[#5a8357] flex items-center justify-center mb-4">
+            <RadioIcon className="w-5 h-5" />
+          </div>
+          <h3 className="font-serif text-lg font-bold text-[#252724]">Ambient Spatial Presence</h3>
+          <p className="text-xs text-[#252724]/70 mt-2 leading-relaxed">
+            Peripheral awareness of colleagues across departments. Output-oriented availability without keystroke logging or webcam surveillance.
+          </p>
+          <Link href="/campus" className="inline-block mt-4 text-xs font-semibold text-[#5a8357] hover:underline">
+            Explore Campus Floors
+          </Link>
+        </div>
 
-      {(targetKnockUser || incomingKnock) && (
-        <KnockModal
-          targetUser={targetKnockUser}
-          incomingKnock={incomingKnock}
-          onClose={() => {
-            setTargetKnockUser(null);
-            setIncomingKnock(null);
-          }}
-          onSendKnock={(targetId, msg) => {
-            // Emits knock event
-          }}
-          onRespondKnock={(knockId, decision) => {
-            setIncomingKnock(null);
-          }}
-        />
-      )}
+        <div className="p-6 rounded-2xl bg-white/80 border border-black/8 shadow-sm">
+          <div className="w-10 h-10 rounded-xl bg-[#eef2ec] text-[#5a8357] flex items-center justify-center mb-4">
+            <VideoIcon className="w-5 h-5" />
+          </div>
+          <h3 className="font-serif text-lg font-bold text-[#252724]">Organic Soft Knocks</h3>
+          <p className="text-xs text-[#252724]/70 mt-2 leading-relaxed">
+            Instant ad-hoc collaboration without scheduled calendar friction. Gentle audio chime cues with full opt-in recipient control.
+          </p>
+          <Link href="/rooms" className="inline-block mt-4 text-xs font-semibold text-[#5a8357] hover:underline">
+            View Huddle Hubs
+          </Link>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-white/80 border border-black/8 shadow-sm">
+          <div className="w-10 h-10 rounded-xl bg-[#eef2ec] text-[#5a8357] flex items-center justify-center mb-4">
+            <UsersIcon className="w-5 h-5" />
+          </div>
+          <h3 className="font-serif text-lg font-bold text-[#252724]">Async Decision Registers</h3>
+          <p className="text-xs text-[#252724]/70 mt-2 leading-relaxed">
+            Every huddle leaves persistent markdown summaries and action items. Absent and time-zone-shifted members stay synchronized.
+          </p>
+          <Link href="/artifacts" className="inline-block mt-4 text-xs font-semibold text-[#5a8357] hover:underline">
+            Browse Decision Logs
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }
