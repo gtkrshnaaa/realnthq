@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { StatusSelector } from '@/components/presence/status_selector';
 import { UserProfile, UserPresenceStatus } from '@/types/office.types';
@@ -6,13 +6,14 @@ import { UserProfile, UserPresenceStatus } from '@/types/office.types';
 interface HeaderProps {
   currentUser?: UserProfile;
   activePath?: string;
+  organizationName?: string;
   onUpdateStatus?: (status: UserPresenceStatus, message?: string) => void;
 }
 
 export function Header({
   currentUser = {
     id: 'b0000000-0000-0000-0000-000000000001',
-    email: 'admin@acme.org',
+    email: 'admin@squad.realnthq.local',
     fullName: 'Alex Vance',
     displayTitle: 'Head of Engineering',
     status: 'AVAILABLE',
@@ -21,10 +22,28 @@ export function Header({
     deskId: 'desk-1',
   },
   activePath = '/',
+  organizationName,
   onUpdateStatus,
 }: HeaderProps) {
+  const [orgName, setOrgName] = useState(organizationName || 'RealntHQ Dev Squad');
+
+  useEffect(() => {
+    if (!organizationName) {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+      fetch(`${apiUrl}/organization`)
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (data && data.name) {
+            setOrgName(data.name);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [organizationName]);
+
   const navItems = [
-    { label: 'Campus Grid', href: '/' },
+    { label: 'Overview', href: '/' },
+    { label: 'Campus Grid', href: '/campus' },
     { label: 'Meeting Rooms', href: '/rooms' },
     { label: 'Decision Logs', href: '/artifacts' },
     { label: 'Team Roster', href: '/team' },
@@ -39,11 +58,11 @@ export function Header({
               realnthq
             </Link>
             <span className="px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357] text-[11px] font-mono">
-              Acme Global Digital Campus
+              {orgName}
             </span>
           </div>
           <p className="text-xs text-[#252724]/70 mt-0.5">
-            Adaptive Virtual Office for Low-Scale to High-Scale Remote Organizations
+            Self-Hosted Virtual Office for Distributed Organizations
           </p>
         </div>
 

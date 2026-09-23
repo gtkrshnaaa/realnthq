@@ -5,13 +5,24 @@ import Link from 'next/link';
 import { BuildingIcon } from '@/components/icons/icons';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('admin@acme.org');
+  const [orgName, setOrgName] = useState('RealntHQ Dev Squad');
+  const [email, setEmail] = useState('admin@squad.realnthq.local');
   const [password, setPassword] = useState('••••••••••••');
   const [authMethod, setAuthMethod] = useState<'SSO' | 'PASSWORD'>('PASSWORD');
 
+  React.useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+    fetch(`${apiUrl}/organization`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data && data.name) setOrgName(data.name);
+      })
+      .catch(() => {});
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = '/';
+    window.location.href = '/campus';
   };
 
   return (
@@ -25,7 +36,7 @@ export default function LoginPage() {
             realnthq
           </h1>
           <p className="text-xs text-[#252724]/70 mt-1">
-            Acme Global Digital Campus Workplace Authentication
+            {orgName} Workplace Authentication
           </p>
         </div>
 
