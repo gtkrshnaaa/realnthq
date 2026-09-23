@@ -148,6 +148,18 @@ npm run test:e2e          # Puppeteer browser automation tests
 
 ---
 
-## 9. License
+## 9. Contributing and Community Standards
+
+We welcome contributions from engineers worldwide. To maintain high code quality and architectural integrity:
+
+* **Contribution Guide**: Read [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md) for branch strategy (`devv`), coding rules, atomic micro-commits, and PR guidelines.
+* **Code of Conduct**: Review [.github/CODE_OF_CONDUCT.md](.github/CODE_OF_CONDUCT.md) for our standards of acceptable community behavior.
+* **Security Policy**: See [.github/SECURITY.md](.github/SECURITY.md) for vulnerability reporting and SLA response times.
+* **Pull Request Template**: All PRs must satisfy the quality checklist in [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md).
+* **Issue Templates**: Structured templates are provided for [Bug Reports](.github/ISSUE_TEMPLATE/bug_report.md), [Feature Requests](.github/ISSUE_TEMPLATE/feature_request.md), and [Architecture RFCs](.github/ISSUE_TEMPLATE/architecture_proposal.md).
+
+---
+
+## 10. License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
