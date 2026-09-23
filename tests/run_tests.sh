@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${SCRIPT_DIR}"
 
 echo "=================================================="
-echo "    realntoffice Test Automation Suite"
+echo "    realnthq Test Automation Suite"
 echo "=================================================="
 
 # 1. Run integration tests

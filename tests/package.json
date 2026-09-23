@@ -1,7 +1,7 @@
 {
-  "name": "realntoffice-tests",
+  "name": "realnthq-tests",
   "version": "1.0.0",
-  "description": "Puppeteer E2E and integration test suites for realntoffice",
+  "description": "Puppeteer E2E and integration test suites for realnthq",
   "author": "gtkrshnaaa",
   "private": true,
   "license": "MIT",

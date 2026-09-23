@@ -1,12 +1,12 @@
 /**
- * realntoffice: Puppeteer E2E Test Suite
+ * realnthq: Puppeteer E2E Test Suite
  * Validates Virtual Office dashboard, desk claims, floor switches, and soft knocks.
  */
 
 const puppeteer = require('puppeteer');
 
 async function runE2ETests() {
-  console.log('[*] Starting realntoffice Puppeteer E2E validation...');
+  console.log('[*] Starting realnthq Puppeteer E2E validation...');
   const targetUrl = process.env.CLIENT_URL || 'http://localhost:3000';
 
   let browser;
@@ -41,9 +41,9 @@ async function runE2ETests() {
       console.log(`[!] Target URL ${targetUrl} not currently serving HTTP daemon (${netErr.message}).`);
       console.log('[*] Validating Puppeteer headless runtime capability...');
       const dummyPage = await browser.newPage();
-      await dummyPage.setContent('<html><body><h1>realntoffice Test Container</h1></body></html>');
+      await dummyPage.setContent('<html><body><h1>realnthq Test Container</h1></body></html>');
       const text = await dummyPage.$eval('h1', (el) => el.textContent);
-      if (text === 'realntoffice Test Container') {
+      if (text === 'realnthq Test Container') {
         console.log('[OK] Puppeteer headless engine is fully operational.');
       }
     }

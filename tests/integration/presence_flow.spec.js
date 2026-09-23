@@ -1,12 +1,12 @@
 /**
- * realntoffice: Presence & Interaction Integration Tests
+ * realnthq: Presence & Interaction Integration Tests
  * Validates state transitions, desk reservations, soft knocks, and zone scoping.
  */
 
 const assert = require('assert');
 
 function runIntegrationTests() {
-  console.log('[*] Running realntoffice Presence & Interaction Integration Tests...');
+  console.log('[*] Running realnthq Presence & Interaction Integration Tests...');
 
   // Test 1: Desk Claim and Vacate Flow
   console.log('[*] Test 1: Desk Claim & Vacate Lifecycle...');
