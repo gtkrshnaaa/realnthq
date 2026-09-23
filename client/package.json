@@ -1,7 +1,7 @@
 {
-  "name": "realntoffice-client",
+  "name": "realnthq-client",
   "version": "1.0.0",
-  "description": "Next.js frontend client for realntoffice virtual workplace",
+  "description": "Next.js frontend client for realnthq virtual workplace",
   "author": "gtkrshnaaa",
   "private": true,
   "license": "MIT",

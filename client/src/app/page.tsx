@@ -162,7 +162,7 @@ export default function OfficeDashboard() {
         <div>
           <div className="flex items-center gap-2">
             <h1 className="font-serif text-2xl font-bold tracking-tight text-[#252724]">
-              realntoffice
+              realnthq
             </h1>
             <span className="px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357] text-[11px] font-mono">
               Acme Global Digital Campus
