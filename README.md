@@ -13,7 +13,7 @@ An adaptive open-source virtual office platform engineered for low-scale to high
 ### Scale Continuum
 * **Micro Scale (1 to 15 members)**: Single flat floor, unified open desks, peer-to-peer WebRTC audio/video mesh.
 * **Mid Scale (15 to 150 members)**: Multi-department floors, scheduled meeting rooms, focus pods, single Selective Forwarding Unit (SFU).
-* **Enterprise Scale (150 to 10,000+ members)**: Multi-floor digital campuses, spatial quadtree interest management, clustered media servers, Redis pub/sub, and role-based access control.
+* **Enterprise Scale (150 to 10,000+ members)**: Multi-floor headquarters, spatial quadtree interest management, clustered media servers, Redis pub/sub, and role-based access control.
 
 ---
 
@@ -35,7 +35,7 @@ realnthq/
 │   └── docs_manifest.json
 ├── client/                # Next.js 15 frontend (Tailwind CSS, Warm Editorial Light design)
 ├── server/                # NestJS 11+ backend (REST API, WebSockets, Domain Modules)
-├── databases/             # PostgreSQL DDL schemas, migrations, and campus seeds
+├── databases/             # PostgreSQL DDL schemas, migrations, and headquarters seeds
 │   ├── 01_init.sql
 │   ├── 02_tables.sql
 │   └── 03_seed.sql
@@ -62,7 +62,7 @@ realnthq/
 `realnthq` is built strictly for self-hosted enterprise and team deployments:
 
 * **Platform Branding**: The platform engine name is **Realnt HQ** (or `realnthq`), which represents the open-source software product and core UI shell.
-* **Dynamic Organization Identity**: In self-hosted instances, the organization name, campus structure, and team rosters are completely dynamic. Neither the welcome landing page nor the office dashboard hardcodes company names. Everything is served dynamically from the PostgreSQL database (`organizations` schema) via the REST API (`GET /organization`).
+* **Dynamic Organization Identity**: In self-hosted instances, the organization name, office structure, and team rosters are completely dynamic. Neither the welcome landing page nor the office dashboard hardcodes company names. Everything is served dynamically from the PostgreSQL database (`organizations` schema) via the REST API (`GET /organization`).
 * **Fictitious Development Organization**: For development, testing, and initial container seeding, the platform provisions a sample fictitious organization named **RealntHQ Dev Squad** (domain: `squad.realnthq.local`). This allows developers to experience a fully populated multi-floor virtual headquarters immediately after running `./deployment/deploy.sh`.
 * **Production Customization**: To deploy for your own company, simply update your organization name, slug, and domains in PostgreSQL (`databases/03_seed.sql` or via API) without touching any frontend code.
 
@@ -119,7 +119,7 @@ To bootstrap the entire multi-container environment (PostgreSQL, Redis, NestJS s
 
 Once running:
 * **Welcome Landing Page**: [http://localhost:3000](http://localhost:3000)
-* **Virtual Campus Grid**: [http://localhost:3000/campus](http://localhost:3000/campus)
+* **Virtual Office Grid**: [http://localhost:3000/office](http://localhost:3000/office)
 * **Server REST API**: [http://localhost:4000](http://localhost:4000)
 * **Health Check**: [http://localhost:4000/health](http://localhost:4000/health)
 * **Default Admin**: `admin@squad.realnthq.local` / `password123`
