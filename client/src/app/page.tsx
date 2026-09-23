@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Header } from '@/components/navigation/header';
 import { FloorSelector } from '@/components/campus/floor_selector';
 import { CampusGrid } from '@/components/campus/campus_grid';
 import { PresenceRadar } from '@/components/presence/presence_radar';
-import { StatusSelector } from '@/components/presence/status_selector';
 import { KnockModal } from '@/components/presence/knock_modal';
 import { RoomPanel } from '@/components/rooms/room_panel';
 import { ActiveHuddle } from '@/components/rooms/active_huddle';
@@ -158,37 +158,11 @@ export default function OfficeDashboard() {
 
   return (
     <main className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
-      <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-4 border-b border-black/8">
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="font-serif text-2xl font-bold tracking-tight text-[#252724]">
-              realnthq
-            </h1>
-            <span className="px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357] text-[11px] font-mono">
-              Acme Global Digital Campus
-            </span>
-          </div>
-          <p className="text-xs text-[#252724]/70 mt-1">
-            Adaptive Virtual Office for Low-Scale to High-Scale Remote Organizations
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <StatusSelector
-            currentStatus={currentUser.status}
-            statusMessage={currentUser.statusMessage}
-            onUpdateStatus={handleUpdateStatus}
-          />
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-black/8 shadow-xs">
-            <div className="w-6 h-6 rounded-full bg-[#252724] text-white flex items-center justify-center text-xs font-semibold">
-              {currentUser.fullName.charAt(0)}
-            </div>
-            <span className="text-xs font-semibold text-[#252724]">
-              {currentUser.fullName}
-            </span>
-          </div>
-        </div>
-      </header>
+      <Header
+        currentUser={currentUser}
+        activePath="/"
+        onUpdateStatus={handleUpdateStatus}
+      />
 
       <section>
         <FloorSelector
