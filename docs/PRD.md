@@ -28,7 +28,7 @@ Remote work often degrades into either endless calendar fatigue (constant Zoom/M
 | :--- | :--- | :--- | :--- | :--- |
 | **Tier 1: Micro** | 1 - 15 members | Single flat floor, unified open desks, board room | WebRTC P2P Mesh | In-Memory / PostgreSQL Single Instance |
 | **Tier 2: Mid** | 15 - 150 members | Multi-department floors, scheduled rooms, focus pods | Single Selective Forwarding Unit (SFU) | Redis Pub/Sub + PostgreSQL |
-| **Tier 3: Enterprise** | 150 - 10,000+ | Multi-floor campuses, custom zones, tenant isolation | Clustered Mediasoup/LiveKit SFUs | Distributed Redis Cluster + Sharded Postgres |
+| **Tier 3: Enterprise** | 150 - 10,000+ | Multi-floor headquarters, custom zones, tenant isolation | Clustered Mediasoup/LiveKit SFUs | Distributed Redis Cluster + Sharded Postgres |
 
 ---
 
@@ -43,7 +43,7 @@ To establish clear engineering and product standards, every core feature has an 
   2. Member claims a desk or enters a dedicated zone (e.g., Focus Zone, Pair Programming Pod, Watercooler, Lounge).
   3. Status radiates to colleagues within the spatial scope via debounced WebSockets (heartbeat intervals every 30s).
   4. Status displays discrete states: `Available`, `Focusing (Do Not Disturb)`, `In Quick Huddle`, or `Away`.
-  5. Colleagues view room-level and desk-level occupancies on an interactive 2D campus grid.
+  5. Colleagues view room-level and desk-level occupancies on an interactive 2D office grid.
 
 ### 3.2 Right Flow 2: Organic "Knock" and Instant Huddle
 * **Principle**: Spontaneous collaboration should mimic tapping a colleague on the shoulder without calendar friction.
@@ -57,7 +57,7 @@ To establish clear engineering and product standards, every core feature has an 
 ### 3.3 Right Flow 3: Spatial Interest Management (Quadtree Filtering)
 * **Principle**: Scale must not degrade network bandwidth or client rendering performance.
 * **Flow**:
-  1. The campus map is divided into spatial regions using quadtree boundaries and room scopes.
+  1. The office map is divided into spatial regions using quadtree boundaries and room scopes.
   2. The server only broadcasts micro-coordinate and avatar movement updates to clients within the same visual viewport or room partition.
   3. Global users receive aggregated occupancy counts (e.g., "Engineering Floor: 42 active") rather than 10,000 individual movement events.
   4. Network payload scales as `O(k)` where `k` is local neighbors, instead of `O(N^2)`.
@@ -112,7 +112,7 @@ To prevent degradation into harmful or unscalable practices, the following anti-
 ## 5. Functional Requirements by Core Domain
 
 ### 5.1 Identity and Organization Hierarchy
-* Multi-tenant structure: Organization -> Campuses -> Floors -> Zones -> Rooms & Desks.
+* Multi-tenant structure: Organization -> Headquarters -> Floors -> Zones -> Rooms & Desks.
 * Role-based access control (RBAC): `Owner`, `Admin`, `Floor Manager`, `Member`, `Guest`.
 * Single Sign-On (SSO) via SAML/OAuth2 (Google, GitHub, OIDC) with fallback email magic-links.
 

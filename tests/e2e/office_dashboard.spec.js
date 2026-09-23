@@ -28,7 +28,7 @@ async function runE2ETests() {
       const title = await page.title();
       console.log(`[*] Page title verified: "${title}"`);
 
-      // 2. Verify Campus Grid Elements
+      // 2. Verify Office Grid Elements
       const floorHeader = await page.$eval('h1', (el) => el.textContent);
       console.log(`[*] Main branding header: "${floorHeader.trim()}"`);
 

@@ -50,7 +50,7 @@ async handleStatusChange(
   const user = await this.authService.validateSocket(client);
   const updatedState = await this.presenceService.updateStatus(user.id, dto);
   
-  // Broadcast exclusively to members in the same campus/floor partition
+  // Broadcast exclusively to members in the same office/floor partition
   this.server.to(`floor:${user.floorId}`).emit('presence:member_updated', {
     userId: user.id,
     deskId: updatedState.deskId,

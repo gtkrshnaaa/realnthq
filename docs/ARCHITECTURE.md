@@ -12,7 +12,7 @@
 flowchart TD
     subgraph Client Layer ["Client Layer (Next.js 15 App Router)"]
         UI["Warm Editorial UI (@/components)"]
-        Canvas["Spatial 2D Campus Grid"]
+        Canvas["Spatial 2D Office Grid"]
         Store["State Management (Zustand)"]
         SignalingClient["WebSocket & WebRTC Signaling Client"]
     end
@@ -89,7 +89,7 @@ realnthq/
 ### 3.1 Primary Relational Schemas
 1. **`organizations`**: Multi-tenant workspace entities with domain configuration.
 2. **`users`**: User identities, credentials, profile metadata, and organizational role.
-3. **`campuses`**: Physical or logical office locations within an organization.
+3. **`headquarters`**: Physical or logical office locations within an organization.
 4. **`floors`**: Spatial levels hosting zones, rooms, and desk grids.
 5. **`zones`**: Logical groupings (e.g., Engineering, Executive, Social, Focus).
 6. **`rooms`**: Audio/video meeting spaces with capacity constraints.
