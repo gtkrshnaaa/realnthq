@@ -2,6 +2,8 @@
 
 An adaptive open-source virtual office platform engineered for low-scale to high-scale organizations conducting fully remote workplace operations.
 
+![realnthq Virtual Campus Preview](./docs/preview/screenshots/01-virtual-campus.jpg)
+
 ---
 
 ## 1. Overview and Core Vision
@@ -23,10 +25,13 @@ Per strict architectural constraints, the repository root enforces a clean, modu
 realnthq/
 ├── README.md              # Project overview, architecture, and orchestration guides
 ├── LICENSE                # Open source MIT license
-├── docs/                  # PRD, architectural diagrams, and pattern matrices
+├── docs/                  # PRD, architectural diagrams, pattern matrices, and previews
 │   ├── PRD.md
 │   ├── ARCHITECTURE.md
 │   ├── RIGHT_AND_ANTI_PATTERNS.md
+│   ├── preview/
+│   │   ├── allpages.md    # Visual interface catalogue and route documentation
+│   │   └── screenshots/   # High-resolution desktop previews and archival ZIP
 │   └── docs_manifest.json
 ├── client/                # Next.js 15 frontend (Tailwind CSS, Warm Editorial Light design)
 ├── server/                # NestJS 11+ backend (REST API, WebSockets, Domain Modules)
@@ -131,9 +136,14 @@ npm run test:e2e          # Puppeteer browser automation tests
 
 ---
 
-## 8. Operational Utilities
+## 8. Visual Documentation and Operational Utilities
 
-* **Screenshot Crawler**: Captures 1920x1080 route screenshots to `docs/preview/screenshots/`:
+### Visual Interface Previews
+* **Allpages Interface Catalogue**: Complete high-fidelity 1920x1080 visual index for all application routes: [docs/preview/allpages.md](docs/preview/allpages.md).
+* **Archival Screenshot Bundle (ZIP)**: Download all sequential captures: [docs/preview/screenshots/zip/realnthq.zip](docs/preview/screenshots/zip/realnthq.zip).
+
+### Operational Utilities
+* **Screenshot Crawler**: Automates headless full-route capture, archival packaging, and catalog generation:
   ```bash
   node scripts/screenshot_crawler.js
   ```
