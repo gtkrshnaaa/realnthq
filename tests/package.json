@@ -1,0 +1,16 @@
+{
+  "name": "realntoffice-tests",
+  "version": "1.0.0",
+  "description": "Puppeteer E2E and integration test suites for realntoffice",
+  "author": "gtkrshnaaa",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test:e2e": "node e2e/office_dashboard.spec.js",
+    "test:integration": "node integration/presence_flow.spec.js",
+    "test": "npm run test:integration"
+  },
+  "dependencies": {
+    "puppeteer": "^24.2.1"
+  }
+}
