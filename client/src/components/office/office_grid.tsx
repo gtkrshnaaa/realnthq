@@ -2,7 +2,7 @@ import React from 'react';
 import { DeskData, UserProfile } from '@/types/office.types';
 import { DeskTile } from './desk_tile';
 
-interface CampusGridProps {
+interface OfficeGridProps {
   floorName: string;
   desks: DeskData[];
   currentUser: UserProfile;
@@ -11,14 +11,14 @@ interface CampusGridProps {
   onKnockUser: (user: UserProfile) => void;
 }
 
-export function CampusGrid({
+export function OfficeGrid({
   floorName,
   desks,
   currentUser,
   onClaimDesk,
   onReleaseDesk,
   onKnockUser,
-}: CampusGridProps) {
+}: OfficeGridProps) {
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-black/8 p-5 shadow-sm">
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-black/5">
