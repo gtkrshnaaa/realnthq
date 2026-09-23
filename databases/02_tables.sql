@@ -1,5 +1,5 @@
 -- ============================================================================
--- realntoffice: Relational Schema Definition
+-- realnthq: Relational Schema Definition
 -- Engine: PostgreSQL 15+
 -- ============================================================================
 

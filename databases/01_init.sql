@@ -1,5 +1,5 @@
 -- ============================================================================
--- realntoffice: Database Initialization Script
+-- realnthq: Database Initialization Script
 -- Engine: PostgreSQL 15+
 -- ============================================================================
 
