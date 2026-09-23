@@ -2,7 +2,7 @@
 
 An adaptive open-source virtual office platform engineered for low-scale to high-scale organizations conducting fully remote workplace operations.
 
-![realnthq Virtual Campus Preview](./docs/preview/screenshots/01-virtual-campus.jpg)
+![realnthq Welcome Landing Page Preview](./docs/preview/screenshots/01-landing-page.jpg)
 
 ---
 
@@ -57,7 +57,18 @@ realnthq/
 
 ---
 
-## 3. Technology Stack
+## 3. Self-Hosting Model & Dynamic Organization Branding
+
+`realnthq` is built strictly for self-hosted enterprise and team deployments:
+
+* **Platform Branding**: The platform engine name is **Realnt HQ** (or `realnthq`), which represents the open-source software product and core UI shell.
+* **Dynamic Organization Identity**: In self-hosted instances, the organization name, campus structure, and team rosters are completely dynamic. Neither the welcome landing page nor the office dashboard hardcodes company names. Everything is served dynamically from the PostgreSQL database (`organizations` schema) via the REST API (`GET /organization`).
+* **Fictitious Development Organization**: For development, testing, and initial container seeding, the platform provisions a sample fictitious organization named **RealntHQ Dev Squad** (domain: `squad.realnthq.local`). This allows developers to experience a fully populated multi-floor virtual headquarters immediately after running `./deployment/deploy.sh`.
+* **Production Customization**: To deploy for your own company, simply update your organization name, slug, and domains in PostgreSQL (`databases/03_seed.sql` or via API) without touching any frontend code.
+
+---
+
+## 4. Technology Stack
 
 * **Frontend Client (`client/`)**: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, Lucide icons, Socket.IO client.
 * **Backend Server (`server/`)**: NestJS 11+, TypeScript, WebSockets Gateway, Class-Validator, PostgreSQL connection pool.
@@ -67,7 +78,7 @@ realnthq/
 
 ---
 
-## 4. Right Patterns vs. Anti-Patterns
+## 5. Right Patterns vs. Anti-Patterns
 
 | Domain | Right Flow (Standard) | Anti-Pattern (Prohibited) |
 | :--- | :--- | :--- |
@@ -81,7 +92,7 @@ For the complete specification, read [docs/RIGHT_AND_ANTI_PATTERNS.md](docs/RIGH
 
 ---
 
-## 5. Design System Baseline (Warm Editorial Light)
+## 6. Design System Baseline (Warm Editorial Light)
 
 `realnthq` applies the universal **Warm Editorial Light** aesthetic:
 * **Canvas**: `#fbfbfa` warm bone background with alternating organic cards.
@@ -94,7 +105,7 @@ For the complete specification, read [docs/RIGHT_AND_ANTI_PATTERNS.md](docs/RIGH
 
 ---
 
-## 6. Quickstart and Single-Enter Orchestration
+## 7. Quickstart and Single-Enter Orchestration
 
 ### Prerequisites
 * Docker and Docker Compose plugin installed
@@ -107,10 +118,11 @@ To bootstrap the entire multi-container environment (PostgreSQL, Redis, NestJS s
 ```
 
 Once running:
-* **Client Dashboard**: [http://localhost:3000](http://localhost:3000)
+* **Welcome Landing Page**: [http://localhost:3000](http://localhost:3000)
+* **Virtual Campus Grid**: [http://localhost:3000/campus](http://localhost:3000/campus)
 * **Server REST API**: [http://localhost:4000](http://localhost:4000)
 * **Health Check**: [http://localhost:4000/health](http://localhost:4000/health)
-* **Default Admin**: `admin@acme.org` / `password123`
+* **Default Admin**: `admin@squad.realnthq.local` / `password123`
 
 ### 2. Zero-Friction Redeployment
 To reset local changes, pull latest branch updates, and restart services:
@@ -120,7 +132,7 @@ To reset local changes, pull latest branch updates, and restart services:
 
 ---
 
-## 7. Automated Testing and Verification
+## 8. Automated Testing and Verification
 
 Run the unified test runner:
 ```bash
@@ -136,7 +148,7 @@ npm run test:e2e          # Puppeteer browser automation tests
 
 ---
 
-## 8. Visual Documentation and Operational Utilities
+## 9. Visual Documentation and Operational Utilities
 
 ### Visual Interface Previews
 * **Allpages Interface Catalogue**: Complete high-fidelity 1920x1080 visual index for all application routes: [docs/preview/allpages.md](docs/preview/allpages.md).
@@ -158,7 +170,7 @@ npm run test:e2e          # Puppeteer browser automation tests
 
 ---
 
-## 9. Contributing and Community Standards
+## 10. Contributing and Community Standards
 
 We welcome contributions from engineers worldwide. To maintain high code quality and architectural integrity:
 
@@ -170,6 +182,6 @@ We welcome contributions from engineers worldwide. To maintain high code quality
 
 ---
 
-## 10. License
+## 11. License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
