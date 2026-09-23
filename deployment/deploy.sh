@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================================
-# realntoffice: Single-Enter Deployment Script
+# realnthq: Single-Enter Deployment Script
 # ============================================================================
 set -euo pipefail
 
@@ -8,7 +8,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 echo "=================================================="
-echo "      realntoffice: Deploying Environment"
+echo "      realnthq: Deploying Environment"
 echo "=================================================="
 
 cd "${SCRIPT_DIR}"
@@ -41,12 +41,12 @@ until docker compose ps | grep -q "(healthy)"; do
 done
 
 echo "=================================================="
-echo "    realntoffice Deployment Complete"
+echo "    realnthq Deployment Complete"
 echo "=================================================="
 echo "  [OK] Client UI:     http://localhost:3000"
 echo "  [OK] Server API:    http://localhost:4000"
 echo "  [OK] Health check:  http://localhost:4000/health"
-echo "  [OK] PostgreSQL:    localhost:5432 (db: realntoffice)"
+echo "  [OK] PostgreSQL:    localhost:5432 (db: realnthq)"
 echo "  [OK] Redis PubSub:  localhost:6379"
 echo "  [OK] Default User:  admin@acme.org / password123"
 echo "=================================================="

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================================
-# realntoffice: Zero-Friction Redeployment Script
+# realnthq: Zero-Friction Redeployment Script
 # ============================================================================
 set -euo pipefail
 
@@ -8,7 +8,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 echo "=================================================="
-echo "     realntoffice: Redeploying Active Branch"
+echo "     realnthq: Redeploying Active Branch"
 echo "=================================================="
 
 cd "${ROOT_DIR}"

@@ -1,12 +1,12 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: realntoffice-db
+    container_name: realnthq-db
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: ${POSTGRES_DB:-realntoffice}
+      POSTGRES_DB: ${POSTGRES_DB:-realnthq}
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     volumes:
@@ -15,14 +15,14 @@ services:
       - ../databases/02_tables.sql:/docker-entrypoint-initdb.d/02_tables.sql:ro
       - ../databases/03_seed.sql:/docker-entrypoint-initdb.d/03_seed.sql:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d realntoffice"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d realnthq"]
       interval: 5s
       timeout: 5s
       retries: 10
 
   redis:
     image: redis:7-alpine
-    container_name: realntoffice-redis
+    container_name: realnthq-redis
     restart: unless-stopped
     ports:
       - "${REDIS_PORT:-6379}:6379"
@@ -36,7 +36,7 @@ services:
     build:
       context: ..
       dockerfile: deployment/Dockerfile.server
-    container_name: realntoffice-server
+    container_name: realnthq-server
     restart: unless-stopped
     ports:
       - "${SERVER_PORT:-4000}:4000"
@@ -47,7 +47,7 @@ services:
       DATABASE_PORT: 5432
       DATABASE_USER: ${POSTGRES_USER:-postgres}
       DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      DATABASE_NAME: ${POSTGRES_DB:-realntoffice}
+      DATABASE_NAME: ${POSTGRES_DB:-realnthq}
       REDIS_HOST: redis
       REDIS_PORT: 6379
       CORS_ORIGIN: "http://localhost:3000"
@@ -66,7 +66,7 @@ services:
     build:
       context: ..
       dockerfile: deployment/Dockerfile.client
-    container_name: realntoffice-client
+    container_name: realnthq-client
     restart: unless-stopped
     ports:
       - "${CLIENT_PORT:-3000}:3000"
