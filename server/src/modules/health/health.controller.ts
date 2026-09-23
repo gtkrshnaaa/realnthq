@@ -6,7 +6,7 @@ export class HealthController {
   check() {
     return {
       status: 'ok',
-      service: 'realntoffice-server',
+      service: 'realnthq-server',
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
     };

@@ -1,7 +1,7 @@
 {
-  "name": "realntoffice-server",
+  "name": "realnthq-server",
   "version": "1.0.0",
-  "description": "NestJS backend engine for realntoffice virtual office platform",
+  "description": "NestJS backend engine for realnthq virtual office platform",
   "author": "gtkrshnaaa",
   "private": true,
   "license": "MIT",
