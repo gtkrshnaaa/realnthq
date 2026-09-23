@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { Header } from '@/components/navigation/header';
-import { FloorSelector } from '@/components/campus/floor_selector';
-import { CampusGrid } from '@/components/campus/campus_grid';
+import { FloorSelector } from '@/components/office/floor_selector';
+import { OfficeGrid } from '@/components/office/office_grid';
 import { PresenceRadar } from '@/components/presence/presence_radar';
 import { KnockModal } from '@/components/presence/knock_modal';
 import { RoomPanel } from '@/components/rooms/room_panel';
@@ -17,7 +17,7 @@ import {
   KnockNotification,
 } from '@/types/office.types';
 
-export default function CampusPage() {
+export default function OfficePage() {
   const [currentUser, setCurrentUser] = useState<UserProfile>({
     id: 'b0000000-0000-0000-0000-000000000001',
     email: 'admin@squad.realnthq.local',
@@ -160,7 +160,7 @@ export default function CampusPage() {
     <main className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
       <Header
         currentUser={currentUser}
-        activePath="/campus"
+        activePath="/office"
         onUpdateStatus={handleUpdateStatus}
       />
 
@@ -174,7 +174,7 @@ export default function CampusPage() {
 
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <CampusGrid
+          <OfficeGrid
             floorName="Engineering & Product Floor (Level 2)"
             desks={desks}
             currentUser={currentUser}
