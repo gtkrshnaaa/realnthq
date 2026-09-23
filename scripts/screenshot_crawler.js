@@ -29,16 +29,16 @@ const ROUTES = [
     route: '/',
     title: 'Welcome Landing Page & Headquarters Hub',
     description:
-      'Dedicated self-hosted welcoming portal greeting team members of the host organization (e.g. RealntHQ Dev Squad) with dynamic company data, campus statistics, and direct action gateways powered by Realnt HQ.',
-    components: ['Header', 'WelcomeBanner', 'DynamicOrgBadge', 'CampusStats', 'ActionGateways', 'FeatureHighlights'],
+      'Dedicated self-hosted welcoming portal greeting team members of the host organization (e.g. RealntHQ Dev Squad) with dynamic company data, office statistics, and direct action gateways powered by Realnt HQ.',
+    components: ['Header', 'WelcomeBanner', 'DynamicOrgBadge', 'OfficeStats', 'ActionGateways', 'FeatureHighlights'],
   },
   {
-    name: '02-virtual-campus',
-    route: '/campus',
-    title: 'Virtual Campus Floor & Desk Grid',
+    name: '02-office-grid',
+    route: '/office',
+    title: 'Virtual Office Floor & Desk Grid',
     description:
       'Interactive 2D virtual office canvas featuring multi-floor selection, real-time desk claims, status tags, spatial presence radar, and ad-hoc room huddles.',
-    components: ['Header', 'FloorSelector', 'CampusGrid', 'DeskTile', 'PresenceRadar', 'RoomPanel', 'StatusSelector'],
+    components: ['Header', 'FloorSelector', 'OfficeGrid', 'DeskTile', 'PresenceRadar', 'RoomPanel', 'StatusSelector'],
   },
   {
     name: '03-meeting-rooms',
@@ -70,7 +70,7 @@ const ROUTES = [
     title: 'Single Sign-On & Authentication Portal',
     description:
       'Enterprise authentication gate supporting Okta / SAML SSO, Google Workspace, GitHub Org, and direct magic-link login with zero-surveillance compliance.',
-    components: ['LoginForm', 'SSOButtons', 'CampusBranding', 'PrivacyNotice'],
+    components: ['LoginForm', 'SSOButtons', 'OfficeBranding', 'PrivacyNotice'],
   },
 ];
 
