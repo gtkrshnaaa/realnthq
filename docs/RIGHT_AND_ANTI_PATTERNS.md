@@ -1,6 +1,6 @@
 # Explicit Flow Matrix: Right Patterns vs Anti-Patterns
 
-## Project: realntoffice
+## Project: realnthq
 **Document Version:** 1.0.0  
 **Scope:** Engineering, Product, and Architectural Standards
 
@@ -8,7 +8,7 @@
 
 ## 1. Architectural Philosophy
 
-Every feature in `realntoffice` must adhere to an explicit pattern boundary. This document contrasts the **Right Flow** (the mandatory design implementation) against the **Anti-Pattern** (the prohibited shortcut or harmful anti-flow).
+Every feature in `realnthq` must adhere to an explicit pattern boundary. This document contrasts the **Right Flow** (the mandatory design implementation) against the **Anti-Pattern** (the prohibited shortcut or harmful anti-flow).
 
 ---
 

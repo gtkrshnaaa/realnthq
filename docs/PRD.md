@@ -1,6 +1,6 @@
 # Product Requirements Document (PRD)
 
-## Project: realntoffice
+## Project: realnthq
 **Document Version:** 1.0.0  
 **Target Release:** Open Source V1  
 **Status:** Approved  
@@ -10,11 +10,11 @@
 
 ## 1. Executive Summary
 
-`realntoffice` is an open-source, scalable virtual office platform designed to support fully online workplace collaboration across organizations of any scale, from 2-person agile startups to 10,000+ member distributed enterprises.
+`realnthq` is an open-source, scalable virtual office platform designed to support fully online workplace collaboration across organizations of any scale, from 2-person agile startups to 10,000+ member distributed enterprises.
 
 Remote work often degrades into either endless calendar fatigue (constant Zoom/Meet marathons) or disengaged asynchronous isolation. Existing virtual office tools suffer from two extremes: lightweight toy avatars that break down past 20 users, or invasive surveillance suites that monitor keystrokes and capture periodic webcams.
 
-`realntoffice` bridges this divide through:
+`realnthq` bridges this divide through:
 1. **Adaptive Scalability**: Automatically shifting communication topologies from peer-to-peer WebRTC mesh (small teams) to clustered SFU media servers and spatially sharded pub/sub channels (enterprises).
 2. **Ambient Spatial Presence**: Providing peripheral awareness of team activity without creepy keystroke loggers or forced video streams.
 3. **Frictionless Ad-Hoc Interaction**: Enabling natural "walk-by knocks", ambient co-working zones, and instant huddles.

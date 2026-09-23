@@ -1,6 +1,6 @@
 # System Architecture and Technology Blueprint
 
-## Project: realntoffice
+## Project: realnthq
 **Architecture Version:** 1.0.0  
 **Stack Alignment:** Next.js (Client) + NestJS (Server) + PostgreSQL (Databases) + Puppeteer (E2E Tests) + Docker (Deployment)
 
@@ -52,7 +52,7 @@ flowchart TD
 Per strict architectural constraints, the repository root enforces an isolated, clean directory structure:
 
 ```text
-realntoffice/
+realnthq/
 ├── README.md              # Project overview, quickstart, and design guidelines
 ├── LICENSE                # Open source MIT license
 ├── docs/                  # Architectural specs, PRD, right/anti-patterns

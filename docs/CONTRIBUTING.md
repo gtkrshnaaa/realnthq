@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-The full, official Contribution Guidelines for `realntoffice` are maintained in [.github/CONTRIBUTING.md](../.github/CONTRIBUTING.md).
+The full, official Contribution Guidelines for `realnthq` are maintained in [.github/CONTRIBUTING.md](../.github/CONTRIBUTING.md).
 
 ## Key Standards Summary
 1. **Target Branch**: Always branch from and open PRs against `devv`. Never target `main` directly.
