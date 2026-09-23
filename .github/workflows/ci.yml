@@ -1,0 +1,96 @@
+name: realntoffice CI
+
+on:
+  push:
+    branches:
+      - main
+      - devv
+  pull_request:
+    branches:
+      - main
+      - devv
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  style-and-conventions:
+    name: Codebase Convention Sentinel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify zero forbidden em dashes
+        run: |
+          echo "[*] Checking for forbidden em dashes..."
+          if grep -rn --exclude-dir={.git,node_modules,.next,dist} --exclude="ci.yml" $'\xe2\x80\x94' .; then
+            echo "[x] Error: Forbidden em dash detected. Replace with standard hyphen or colon."
+            exit 1
+          fi
+          echo "[OK] No em dashes found."
+
+  client-check:
+    name: Client Build and Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install Client Dependencies
+        run: cd client && npm ci
+
+      - name: Build Next.js Frontend
+        run: cd client && npm run build
+
+  server-check:
+    name: Server Build and Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+
+      - name: Install Server Dependencies
+        run: cd server && npm ci
+
+      - name: Build NestJS Server
+        run: cd server && npm run build
+
+  tests-and-scripts:
+    name: Test Automation and Script Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Test Dependencies
+        run: cd tests && npm ci
+
+      - name: Execute Automated Test Suite
+        run: bash tests/run_tests.sh
+
+      - name: Execute Documentation Builder
+        run: node scripts/docs_builder.js
+
+      - name: Execute Health Validator
+        run: bash scripts/health_validator.sh
