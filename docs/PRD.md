@@ -142,5 +142,5 @@ To prevent degradation into harmful or unscalable practices, the following anti-
 * **Performance**: Presence updates delivered in under 100ms round-trip; room layout initial load under 1.2s.
 * **Availability**: 99.9% uptime with zero single points of failure in Tier 2 and Tier 3 topologies.
 * **Security**: AES-256 encryption at rest; TLS 1.3 in transit; DTLS-SRTP for all media streams.
-* **Aesthetics**: Universal Warm Editorial Light design system (`#fbfbfa` canvas, Fraunces serif headlines, DM Sans UI, solid obsidian actions, organic sage accents).
+* **Aesthetics**: Universal Warm Editorial Light design system (`#fbfbfa` canvas, Plus Jakarta Sans headlines, Inter / DM Sans UI, solid obsidian actions, organic sage accents).
 * **Observability**: Prometheus metrics endpoint, OpenTelemetry trace spans, and structured JSON logs.

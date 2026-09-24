@@ -18,7 +18,7 @@ Every contribution must align with our foundational engineering principles:
 
 ### 1.2 Anti-AI-Slop Craftsmanship
 * **UI/UX Standards**: Interfaces must meet the engineering benchmarks of Linear, Figma, and Raycast. Neon purple gradients, floating centered bubbles, unstyled native checkboxes, and unscaled typography are banned.
-* **Default Design Baseline**: All UI components must adhere to the **Warm Editorial Light** design system (`#fbfbfa` canvas, Fraunces serif headlines, DM Sans UI text, solid obsidian `#252724` buttons, 1px hairline borders `border-black/8`, themed inputs, and soft sage accents).
+* **Default Design Baseline**: All UI components must adhere to the **Warm Editorial Light** design system (`#fbfbfa` canvas, Plus Jakarta Sans headlines, Inter / DM Sans UI text, solid obsidian `#252724` buttons, 1px hairline borders `border-black/8`, themed inputs, and soft sage accents).
 * **Zero Emojis Policy**: Raw emojis are strictly banned across source code, UI/UX, markup, filenames, commit messages, documentation, and PR discussions. Use clean, scalable SVGs or professional icon packages (Lucide).
 * **Zero Em Dash Policy**: Em dashes are banned across all artifacts. Use standard hyphens ("-"), colons (":"), or standard parentheses.
 * **Backend Discipline**: Passive error swallowing (`catch (e) {}`), speculative abstraction layers, unoptimized N+1 queries, and conversational AI comments (`// In a real application...`) are prohibited.

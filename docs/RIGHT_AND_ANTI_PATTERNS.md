@@ -22,7 +22,7 @@ Every feature in `realnthq` must adhere to an explicit pattern boundary. This do
 | **Media Architecture** | Decoupled SFU media servers (Mediasoup / LiveKit) controlled by lightweight signaling. | Ingesting and transcoding WebRTC RTP packets directly in the primary NestJS process. | Prevents CPU spikes from stalling HTTP/WebSocket business state pipelines. |
 | **Meeting Documentation** | Room-level persistent markdown journals and decision registers synced asynchronously. | Purely verbal ephemeral meetings where absent or time-zone-shifted members lose context. | Solves knowledge fragmentation and prevents duplicate alignment sessions. |
 | **Offline & Reconnection** | Vector clock state tracking with exponential backoff and delta reconciliation. | Blind hard-refresh or total state re-download on transient network disconnections. | Conserves bandwidth and prevents visual flickering on unstable networks. |
-| **UI Aesthetics** | Warm Editorial Light system: `#fbfbfa` canvas, Fraunces serif, DM Sans UI, solid obsidian actions, soft sage accents. | Neon purple gradients on pitch black, unstyled browser checkboxes, floating centered bubbles. | Delivers a serene, professional environment suitable for 8-hour daily enterprise use. |
+| **UI Aesthetics** | Warm Editorial Light system: `#fbfbfa` canvas, Plus Jakarta Sans headlines, Inter / DM Sans UI, solid obsidian actions, soft sage accents. | Neon purple gradients on pitch black, unstyled browser checkboxes, floating centered bubbles. | Delivers a serene, professional environment suitable for 8-hour daily enterprise use. |
 
 ---
 

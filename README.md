@@ -96,7 +96,7 @@ For the complete specification, read [docs/RIGHT_AND_ANTI_PATTERNS.md](docs/RIGH
 
 `realnthq` applies the universal **Warm Editorial Light** aesthetic:
 * **Canvas**: `#fbfbfa` warm bone background with alternating organic cards.
-* **Typography**: Dual-font pairing with `'Fraunces'` serif headlines and `'DM Sans'` body text.
+* **Typography**: Clean, professional pairing with `'Plus Jakarta Sans'` headlines and `'Inter'` / `'DM Sans'` UI text.
 * **Structure**: 1px hairline borders (`border-black/8`), `rounded-2xl` cards, `rounded-xl` interactive controls.
 * **Form Controls**: Themed select dropdowns, custom SVG icons, and themed checkboxes.
 * **Action Buttons**: Solid obsidian black (`bg-[#252724] hover:bg-[#3b3e39] text-white`).

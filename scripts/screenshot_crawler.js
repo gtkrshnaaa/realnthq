@@ -101,7 +101,7 @@ function generateAllPagesMarkdown(routes, screenshotsDir) {
     '# realnthq: Visual Interface Catalogue',
     '',
     '**Document Purpose:** Complete visual preview archive and interface index for the `realnthq` virtual office platform.',
-    '**Design System Baseline:** Warm Editorial Light (`#fbfbfa` canvas, Fraunces serif, DM Sans UI, solid obsidian actions, soft sage accents).',
+    '**Design System Baseline:** Warm Editorial Light (`#fbfbfa` canvas, Plus Jakarta Sans headlines, Inter / DM Sans UI, solid obsidian actions, soft sage accents).',
     '**Viewport Resolution:** 1920x1080 (16:9 Desktop Full-Fidelity).',
     '',
     '---',

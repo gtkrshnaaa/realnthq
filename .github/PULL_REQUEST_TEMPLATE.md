@@ -27,7 +27,7 @@
 - [ ] My PR targets the `devv` branch (not `main`).
 - [ ] Changes adhere to **Semantic Atomic Architecture** (~150-line soft cap per file, Single Responsibility File, co-located DTOs/contracts).
 - [ ] Strictly zero emojis and zero em dashes across all code, markup, comments, commit messages, and PR description.
-- [ ] UI changes comply with the **Warm Editorial Light** default design system (`#fbfbfa` canvas, Fraunces serif headlines, DM Sans UI, solid obsidian buttons, 1px hairlines, themed form controls).
+- [ ] UI changes comply with the **Warm Editorial Light** default design system (`#fbfbfa` canvas, Plus Jakarta Sans headlines, Inter / DM Sans UI, solid obsidian buttons, 1px hairlines, themed form controls).
 - [ ] Backend changes avoid passive error swallowing (`catch (e) {}`), N+1 queries, and speculative abstractions.
 - [ ] Granular in-stride micro-commits preserved in git history (zero diff hoarding).
 - [ ] Automated tests and builds pass cleanly:
