@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Header } from '@/components/navigation/header';
+import { DashboardLayout } from '@/components/layout/dashboard_layout';
 import { FloorSelector } from '@/components/office/floor_selector';
 import { OfficeGrid } from '@/components/office/office_grid';
 import { PresenceRadar } from '@/components/presence/presence_radar';
@@ -157,12 +157,22 @@ export default function OfficePage() {
   };
 
   return (
-    <main className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
-      <Header
-        currentUser={currentUser}
-        activePath="/office"
-        onUpdateStatus={handleUpdateStatus}
-      />
+    <DashboardLayout
+      activePath="/office"
+      title="Virtual Office Grid"
+      subtitle="Interactive 2D spatial canvas with real-time desk assignment"
+      badge="Live Spatial Session"
+      currentUser={currentUser}
+      onUpdateStatus={handleUpdateStatus}
+      actions={
+        <div className="flex items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#eef2ec] text-[#5a8357] text-xs font-semibold">
+            <span className="w-2 h-2 rounded-full bg-[#5a8357] animate-pulse" />
+            <span>Connected (Low-Latency)</span>
+          </span>
+        </div>
+      }
+    >
 
       <section>
         <FloorSelector
@@ -226,6 +236,6 @@ export default function OfficePage() {
           }}
         />
       )}
-    </main>
+    </DashboardLayout>
   );
 }
