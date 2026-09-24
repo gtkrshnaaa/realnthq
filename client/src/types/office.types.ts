@@ -9,6 +9,7 @@ export interface UserProfile {
   statusMessage?: string;
   deskId?: string;
   floorId?: string;
+  focusRemainingMinutes?: number;
 }
 
 export interface FloorInfo {
@@ -27,6 +28,9 @@ export interface DeskData {
   deskType: 'DEDICATED' | 'HOT_DESK';
   currentOccupant?: UserProfile;
   assignedUser?: UserProfile;
+  stickyNote?: string;
+  customBadge?: string;
+  isFocusPod?: boolean;
 }
 
 export interface RoomData {
@@ -45,4 +49,40 @@ export interface KnockNotification {
   fromUserName: string;
   message?: string;
   timestamp: number;
+}
+
+export interface BufferedKnock extends KnockNotification {
+  bufferedUntil: string;
+  isRead?: boolean;
+}
+
+export interface StandupEntry {
+  id: string;
+  userId: string;
+  userName: string;
+  displayTitle: string;
+  yesterday: string;
+  today: string;
+  blockers?: string;
+  timestamp: string;
+}
+
+export interface GuestPass {
+  id: string;
+  guestName: string;
+  hostUserId: string;
+  hostUserName: string;
+  accessCode: string;
+  targetRoomName: string;
+  status: 'WAITING_LOBBY' | 'IN_SESSION' | 'COMPLETED';
+  createdAt: string;
+}
+
+export interface WhiteboardNote {
+  id: string;
+  roomId: string;
+  title: string;
+  content: string;
+  authorName: string;
+  updatedAt: string;
 }
