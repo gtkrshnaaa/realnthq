@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Header } from '@/components/navigation/header';
+import { DashboardLayout } from '@/components/layout/dashboard_layout';
 import { ActiveHuddle } from '@/components/rooms/active_huddle';
 import { VideoIcon, MicIcon, UsersIcon } from '@/components/icons/icons';
 import { RoomData, UserProfile } from '@/types/office.types';
@@ -66,36 +66,47 @@ export default function RoomsPage() {
   };
 
   return (
-    <main className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
-      <Header currentUser={currentUser} activePath="/rooms" />
-
-      <section className="bg-white/80 backdrop-blur-sm rounded-2xl border border-black/8 p-6 shadow-sm">
+    <DashboardLayout
+      activePath="/rooms"
+      title="Meeting Spaces & Huddle Hubs"
+      subtitle="Decoupled WebRTC mesh and SFU collaboration spaces"
+      badge="Live Signaling"
+      currentUser={currentUser}
+      actions={
+        <button
+          onClick={() => {
+            const newRoom: RoomData = {
+              id: `room-${Date.now()}`,
+              floorId: 'floor-2',
+              name: `Ad-Hoc Huddle ${rooms.length + 1}`,
+              roomType: 'HUDDLE',
+              capacity: 8,
+              occupantCount: 1,
+            };
+            setRooms((prev) => [...prev, newRoom]);
+            setActiveRoom(newRoom);
+          }}
+          className="px-4 py-2 rounded-xl bg-[#252724] hover:bg-[#3b3e39] text-white text-xs font-semibold shadow-xs transition-all"
+        >
+          Provision Instant Huddle
+        </button>
+      }
+    >
+      <section className="bg-white rounded-2xl border border-black/8 p-6 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-black/8 gap-4">
           <div>
-            <h2 className="font-serif text-xl font-bold text-[#252724]">
-              Meeting Spaces & Huddle Hubs
+            <h2 className="font-serif text-lg font-bold text-[#252724]">
+              Available Meeting Rooms
             </h2>
             <p className="text-xs text-[#252724]/70 mt-0.5">
-              Decoupled Signaling Channels & Ephemeral Audio/Video Workspaces
+              Select any open room to join audio/video stream or initiate collaboration.
             </p>
           </div>
-          <button
-            onClick={() => {
-              const newRoom: RoomData = {
-                id: `room-${Date.now()}`,
-                floorId: 'floor-2',
-                name: `Ad-Hoc Huddle ${rooms.length + 1}`,
-                roomType: 'HUDDLE',
-                capacity: 8,
-                occupantCount: 1,
-              };
-              setRooms((prev) => [...prev, newRoom]);
-              setActiveRoom(newRoom);
-            }}
-            className="px-4 py-2 rounded-xl bg-[#252724] hover:bg-[#3b3e39] text-white text-xs font-semibold shadow-sm transition-all"
-          >
-            Provision Instant Huddle
-          </button>
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#eef2ec] text-[#5a8357]">
+              {rooms.length} Active Spaces
+            </span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
@@ -166,6 +177,6 @@ export default function RoomsPage() {
           onLeave={() => setActiveRoom(null)}
         />
       )}
-    </main>
+    </DashboardLayout>
   );
 }
