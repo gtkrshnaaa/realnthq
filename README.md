@@ -29,6 +29,7 @@ realnthq/
 │   ├── PRD.md
 │   ├── ARCHITECTURE.md
 │   ├── RIGHT_AND_ANTI_PATTERNS.md
+│   ├── hq-maps/           # Master developer blueprint (Roles, Pages, Facilities, RBAC)
 │   ├── preview/
 │   │   ├── allpages.md    # Visual interface catalogue and route documentation
 │   │   └── screenshots/   # High-resolution desktop previews and archival ZIP

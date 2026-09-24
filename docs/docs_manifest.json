@@ -28,5 +28,11 @@
     "title": "Security Policy and Responsible Disclosure",
     "bytes": 544,
     "lines": 11
+  },
+  {
+    "fileName": "hq-maps/README.md",
+    "title": "Product & Engineering Master Blueprint (HQ Maps)",
+    "bytes": 1650,
+    "lines": 35
   }
 ]
