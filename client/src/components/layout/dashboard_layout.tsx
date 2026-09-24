@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Sidebar } from '@/components/navigation/sidebar';
-import { MenuIcon, XMarkIcon } from '@/components/icons/icons';
+import { BulletinPanel } from '@/components/bulletin/bulletin_panel';
+import { MenuIcon, XMarkIcon, MegaphoneIcon } from '@/components/icons/icons';
 import { UserProfile, UserPresenceStatus } from '@/types/office.types';
 
 interface DashboardLayoutProps {
@@ -30,6 +31,8 @@ export function DashboardLayout({
   onUpdateStatus,
 }: DashboardLayoutProps) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isBulletinOpen, setIsBulletinOpen] = useState(true);
+  const [isMobileBulletinOpen, setIsMobileBulletinOpen] = useState(false);
 
   return (
     <div className="flex h-screen bg-[#fbfbfa] text-[#252724] overflow-hidden">
@@ -43,7 +46,7 @@ export function DashboardLayout({
         />
       </div>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile Sidebar Drawer Overlay */}
       {isMobileOpen && (
         <div className="fixed inset-0 z-50 lg:hidden flex">
           <div
@@ -71,9 +74,22 @@ export function DashboardLayout({
         </div>
       )}
 
-      {/* Main Workspace Panel */}
+      {/* Mobile Bulletin Drawer Overlay */}
+      {isMobileBulletinOpen && (
+        <div className="fixed inset-0 z-50 xl:hidden flex justify-end">
+          <div
+            className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
+            onClick={() => setIsMobileBulletinOpen(false)}
+          />
+          <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white shadow-xl z-10">
+            <BulletinPanel onClose={() => setIsMobileBulletinOpen(false)} />
+          </div>
+        </div>
+      )}
+
+      {/* Main Workspace Viewport */}
       <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
-        {/* Mobile Top Bar */}
+        {/* Mobile Top Bar (Fixed h-16) */}
         <header className="lg:hidden h-16 px-4 bg-white border-b border-black/8 shrink-0 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <button
@@ -88,12 +104,22 @@ export function DashboardLayout({
               realnthq
             </Link>
           </div>
-          <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357]">
-            {title}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357]">
+              {title}
+            </span>
+            <button
+              type="button"
+              onClick={() => setIsMobileBulletinOpen(true)}
+              className="p-1.5 rounded-lg text-[#5a8357] hover:bg-[#eef2ec]"
+              aria-label="Open company announcements"
+            >
+              <MegaphoneIcon className="w-4 h-4" />
+            </button>
+          </div>
         </header>
 
-        {/* Desktop Context Top Bar */}
+        {/* Desktop Context Top Bar (Fixed h-16) */}
         <div className="hidden lg:flex items-center justify-between h-16 px-6 bg-white/60 border-b border-black/8 backdrop-blur-xs shrink-0">
           <div className="flex items-center gap-3">
             <div>
@@ -108,23 +134,50 @@ export function DashboardLayout({
                 )}
               </div>
               {subtitle && (
-                <p className="text-[11px] text-[#252724]/65 mt-0.5">
+                <p className="text-[11px] text-[#252724]/65 mt-0.5 truncate max-w-md">
                   {subtitle}
                 </p>
               )}
             </div>
           </div>
 
-          {actions && <div className="flex items-center gap-2.5">{actions}</div>}
+          <div className="flex items-center gap-2.5">
+            {actions}
+            <button
+              type="button"
+              onClick={() => setIsBulletinOpen((prev) => !prev)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-medium transition-all ${
+                isBulletinOpen
+                  ? 'bg-[#252724] text-white border-transparent shadow-xs'
+                  : 'bg-white text-[#252724] border-black/8 hover:border-black/20'
+              }`}
+              title="Toggle Company Bulletin Portal"
+            >
+              <MegaphoneIcon className="w-3.5 h-3.5" />
+              <span>HQ Bulletin</span>
+              <span
+                className={`w-1.5 h-1.5 rounded-full ${
+                  isBulletinOpen ? 'bg-[#5a8357]' : 'bg-black/30'
+                }`}
+              />
+            </button>
+          </div>
         </div>
 
-        {/* Scrollable Panel Viewport */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
-          <div className="max-w-7xl mx-auto space-y-6">
+        {/* Scrollable Center Panel Viewport */}
+        <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-7">
+          <div className="max-w-6xl mx-auto space-y-6">
             {children}
           </div>
         </main>
       </div>
+
+      {/* Right-Hand Company Announcements Portal */}
+      {isBulletinOpen && (
+        <div className="hidden xl:block shrink-0 h-full">
+          <BulletinPanel />
+        </div>
+      )}
     </div>
   );
 }
