@@ -43,7 +43,7 @@ export default function WelcomeLandingPage() {
   const hqDisplayName = org.headquartersName || 'RealntHQ Central Headquarters';
 
   return (
-    <main className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-8">
+    <main className="min-h-screen py-4 md:py-6 lg:py-8 w-[90%] max-w-[90%] mx-auto space-y-8">
       <Header activePath="/" />
 
       <section className="bg-white/80 backdrop-blur-sm rounded-2xl border border-black/8 p-8 md:p-12 shadow-sm text-center relative overflow-hidden">
@@ -52,11 +52,11 @@ export default function WelcomeLandingPage() {
           <span>Self-Hosted Instance - {org.name}</span>
         </div>
 
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-[#252724] max-w-3xl mx-auto leading-tight">
+        <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-[#252724] max-w-4xl mx-auto leading-tight">
           Welcome to {org.name} Digital Headquarters
         </h1>
 
-        <p className="text-sm md:text-base text-[#252724]/70 max-w-2xl mx-auto mt-4 leading-relaxed">
+        <p className="text-sm md:text-base text-[#252724]/70 max-w-3xl mx-auto mt-4 leading-relaxed">
           Your private, self-hosted virtual office powered by <span className="font-semibold text-[#252724]">Realnt HQ</span>.
           Experience fluid spatial awareness, spontaneous soft knocks, and persistent decision records without invasive surveillance.
         </p>
@@ -79,7 +79,7 @@ export default function WelcomeLandingPage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-black/8 max-w-3xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-black/8 max-w-5xl mx-auto">
           <div className="p-3 bg-[#fbfbfa] rounded-xl border border-black/5">
             <span className="block text-xl font-bold text-[#252724]">{hqDisplayName}</span>
             <span className="text-[11px] text-[#252724]/60">Main Headquarters</span>
