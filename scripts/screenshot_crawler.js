@@ -72,6 +72,38 @@ const ROUTES = [
       'Enterprise authentication gate supporting Okta / SAML SSO, Google Workspace, GitHub Org, and direct magic-link login with zero-surveillance compliance.',
     components: ['LoginForm', 'SSOButtons', 'OfficeBranding', 'PrivacyNotice'],
   },
+  {
+    name: '07-townhall-stage',
+    route: '/broadcasts',
+    title: 'Company Townhall & Amphitheater Stage',
+    description:
+      'Executive broadcast stage for live company all-hands, moderated audience Q&A, and company-wide announcements.',
+    components: ['Sidebar', 'DashboardLayout', 'BroadcastStage', 'BroadcastQa', 'BulletinPanel'],
+  },
+  {
+    name: '08-daily-standup',
+    route: '/standup',
+    title: 'Asynchronous Daily Standup Kiosk',
+    description:
+      'Daily squad pulse terminal featuring 3-field check-in submission, blocker resolution highlights, and team briefings.',
+    components: ['Sidebar', 'DashboardLayout', 'StandupComposer', 'StandupCard', 'BlockerBanner'],
+  },
+  {
+    name: '09-platform-telemetry',
+    route: '/telemetry',
+    title: 'Platform Telemetry & Operations',
+    description:
+      'Real-time WebSocket connection ping latency, WebRTC SFU bitrates, database connection pools, and immutable security audit trail.',
+    components: ['Sidebar', 'DashboardLayout', 'TelemetryMetrics', 'AuditLogTable'],
+  },
+  {
+    name: '10-guest-reception',
+    route: '/lobby',
+    title: 'Guest Reception & Hospitality Lounge',
+    description:
+      'External visitor access terminal validating 6-digit guest tokens, notifying internal hosts, and hosting visitors in sandboxed lounges.',
+    components: ['DashboardLayout', 'GuestCheckinCard', 'WaitingLounge', 'ShieldCheckIcon'],
+  },
 ];
 
 function checkServerUp(url) {

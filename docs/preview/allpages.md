@@ -20,6 +20,10 @@
 * [04. Decision Registers & Async Artifacts](#04-decision-logs)
 * [05. Team Directory & Spatial Presence Roster](#05-team-directory)
 * [06. Single Sign-On & Authentication Portal](#06-workspace-login)
+* [07. Company Townhall & Amphitheater Stage](#07-townhall-stage)
+* [08. Asynchronous Daily Standup Kiosk](#08-daily-standup)
+* [09. Platform Telemetry & Operations](#09-platform-telemetry)
+* [10. Guest Reception & Hospitality Lounge](#10-guest-reception)
 
 ---
 
@@ -92,5 +96,53 @@
 ![Single Sign-On & Authentication Portal](./screenshots/06-workspace-login.jpg)
 
 > **Architecture & UI Note**: Enterprise authentication gate supporting Okta / SAML SSO, Google Workspace, GitHub Org, and direct magic-link login with zero-surveillance compliance.
+
+---
+
+## 07. Company Townhall & Amphitheater Stage
+
+* **Route:** `/broadcasts` ([http://localhost:3000/broadcasts](http://localhost:3000/broadcasts))
+* **File:** [`docs/preview/screenshots/07-townhall-stage.jpg`](./screenshots/07-townhall-stage.jpg)
+* **Core Components:** `Sidebar`, `DashboardLayout`, `BroadcastStage`, `BroadcastQa`, `BulletinPanel`
+
+![Company Townhall & Amphitheater Stage](./screenshots/07-townhall-stage.jpg)
+
+> **Architecture & UI Note**: Executive broadcast stage for live company all-hands, moderated audience Q&A, and company-wide announcements.
+
+---
+
+## 08. Asynchronous Daily Standup Kiosk
+
+* **Route:** `/standup` ([http://localhost:3000/standup](http://localhost:3000/standup))
+* **File:** [`docs/preview/screenshots/08-daily-standup.jpg`](./screenshots/08-daily-standup.jpg)
+* **Core Components:** `Sidebar`, `DashboardLayout`, `StandupComposer`, `StandupCard`, `BlockerBanner`
+
+![Asynchronous Daily Standup Kiosk](./screenshots/08-daily-standup.jpg)
+
+> **Architecture & UI Note**: Daily squad pulse terminal featuring 3-field check-in submission, blocker resolution highlights, and team briefings.
+
+---
+
+## 09. Platform Telemetry & Operations
+
+* **Route:** `/telemetry` ([http://localhost:3000/telemetry](http://localhost:3000/telemetry))
+* **File:** [`docs/preview/screenshots/09-platform-telemetry.jpg`](./screenshots/09-platform-telemetry.jpg)
+* **Core Components:** `Sidebar`, `DashboardLayout`, `TelemetryMetrics`, `AuditLogTable`
+
+![Platform Telemetry & Operations](./screenshots/09-platform-telemetry.jpg)
+
+> **Architecture & UI Note**: Real-time WebSocket connection ping latency, WebRTC SFU bitrates, database connection pools, and immutable security audit trail.
+
+---
+
+## 10. Guest Reception & Hospitality Lounge
+
+* **Route:** `/lobby` ([http://localhost:3000/lobby](http://localhost:3000/lobby))
+* **File:** [`docs/preview/screenshots/10-guest-reception.jpg`](./screenshots/10-guest-reception.jpg)
+* **Core Components:** `DashboardLayout`, `GuestCheckinCard`, `WaitingLounge`, `ShieldCheckIcon`
+
+![Guest Reception & Hospitality Lounge](./screenshots/10-guest-reception.jpg)
+
+> **Architecture & UI Note**: External visitor access terminal validating 6-digit guest tokens, notifying internal hosts, and hosting visitors in sandboxed lounges.
 
 ---
