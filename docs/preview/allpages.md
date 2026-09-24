@@ -39,11 +39,11 @@
 
 * **Route:** `/office` ([http://localhost:3000/office](http://localhost:3000/office))
 * **File:** [`docs/preview/screenshots/02-office-grid.jpg`](./screenshots/02-office-grid.jpg)
-* **Core Components:** `Header`, `FloorSelector`, `OfficeGrid`, `DeskTile`, `PresenceRadar`, `RoomPanel`, `StatusSelector`
+* **Core Components:** `Sidebar`, `DashboardLayout`, `FloorSelector`, `OfficeGrid`, `DeskTile`, `PresenceRadar`, `RoomPanel`, `StatusSelector`
 
 ![Virtual Office Floor & Desk Grid](./screenshots/02-office-grid.jpg)
 
-> **Architecture & UI Note**: Interactive 2D virtual office canvas featuring multi-floor selection, real-time desk claims, status tags, spatial presence radar, and ad-hoc room huddles.
+> **Architecture & UI Note**: Interactive 2D virtual office canvas featuring persistent left sidebar navigation, multi-floor selection, real-time desk claims, status tags, spatial presence radar, and ad-hoc room huddles.
 
 ---
 
@@ -51,11 +51,11 @@
 
 * **Route:** `/rooms` ([http://localhost:3000/rooms](http://localhost:3000/rooms))
 * **File:** [`docs/preview/screenshots/03-meeting-rooms.jpg`](./screenshots/03-meeting-rooms.jpg)
-* **Core Components:** `Header`, `ActiveHuddle`, `VideoIcon`, `MicIcon`, `UsersIcon`
+* **Core Components:** `Sidebar`, `DashboardLayout`, `ActiveHuddle`, `VideoIcon`, `MicIcon`, `UsersIcon`
 
 ![Meeting Spaces & Huddle Hubs](./screenshots/03-meeting-rooms.jpg)
 
-> **Architecture & UI Note**: Collaborative rooms supporting P2P mesh and SFU gateway signaling, capacity tracking, active meeting indicators, and instant huddle provisioning.
+> **Architecture & UI Note**: Collaborative rooms supporting persistent left sidebar navigation, P2P mesh and SFU gateway signaling, capacity tracking, active meeting indicators, and instant huddle provisioning.
 
 ---
 
@@ -63,11 +63,11 @@
 
 * **Route:** `/artifacts` ([http://localhost:3000/artifacts](http://localhost:3000/artifacts))
 * **File:** [`docs/preview/screenshots/04-decision-logs.jpg`](./screenshots/04-decision-logs.jpg)
-* **Core Components:** `Header`, `ArtifactFilter`, `DecisionCard`, `MarkdownViewer`
+* **Core Components:** `Sidebar`, `DashboardLayout`, `ArtifactFilter`, `DecisionCard`, `MarkdownViewer`
 
 ![Decision Registers & Async Artifacts](./screenshots/04-decision-logs.jpg)
 
-> **Architecture & UI Note**: Persistent room-level markdown records, architectural decisions, and daily standup journals ensuring alignment across asynchronous and distributed team members.
+> **Architecture & UI Note**: Persistent room-level markdown records, architectural decisions, and daily standup journals embedded inside the panel workspace layout.
 
 ---
 
@@ -75,11 +75,11 @@
 
 * **Route:** `/team` ([http://localhost:3000/team](http://localhost:3000/team))
 * **File:** [`docs/preview/screenshots/05-team-directory.jpg`](./screenshots/05-team-directory.jpg)
-* **Core Components:** `Header`, `TeamCard`, `StatusBadge`, `KnockTrigger`, `KnockModal`
+* **Core Components:** `Sidebar`, `DashboardLayout`, `TeamCard`, `StatusBadge`, `KnockTrigger`, `KnockModal`
 
 ![Team Directory & Spatial Presence Roster](./screenshots/05-team-directory.jpg)
 
-> **Architecture & UI Note**: Comprehensive organizational roster showing member roles, desk locations, live availability indicators, and direct one-click soft knock collaboration.
+> **Architecture & UI Note**: Comprehensive organizational roster showing member roles, desk locations, live availability indicators, and direct one-click soft knock collaboration inside the panel layout.
 
 ---
 

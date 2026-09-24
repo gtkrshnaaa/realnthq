@@ -37,32 +37,32 @@ const ROUTES = [
     route: '/office',
     title: 'Virtual Office Floor & Desk Grid',
     description:
-      'Interactive 2D virtual office canvas featuring multi-floor selection, real-time desk claims, status tags, spatial presence radar, and ad-hoc room huddles.',
-    components: ['Header', 'FloorSelector', 'OfficeGrid', 'DeskTile', 'PresenceRadar', 'RoomPanel', 'StatusSelector'],
+      'Interactive 2D virtual office canvas featuring persistent left sidebar navigation, multi-floor selection, real-time desk claims, status tags, spatial presence radar, and ad-hoc room huddles.',
+    components: ['Sidebar', 'DashboardLayout', 'FloorSelector', 'OfficeGrid', 'DeskTile', 'PresenceRadar', 'RoomPanel', 'StatusSelector'],
   },
   {
     name: '03-meeting-rooms',
     route: '/rooms',
     title: 'Meeting Spaces & Huddle Hubs',
     description:
-      'Collaborative rooms supporting P2P mesh and SFU gateway signaling, capacity tracking, active meeting indicators, and instant huddle provisioning.',
-    components: ['Header', 'ActiveHuddle', 'VideoIcon', 'MicIcon', 'UsersIcon'],
+      'Collaborative rooms supporting persistent left sidebar navigation, P2P mesh and SFU gateway signaling, capacity tracking, active meeting indicators, and instant huddle provisioning.',
+    components: ['Sidebar', 'DashboardLayout', 'ActiveHuddle', 'VideoIcon', 'MicIcon', 'UsersIcon'],
   },
   {
     name: '04-decision-logs',
     route: '/artifacts',
     title: 'Decision Registers & Async Artifacts',
     description:
-      'Persistent room-level markdown records, architectural decisions, and daily standup journals ensuring alignment across asynchronous and distributed team members.',
-    components: ['Header', 'ArtifactFilter', 'DecisionCard', 'MarkdownViewer'],
+      'Persistent room-level markdown records, architectural decisions, and daily standup journals embedded inside the panel workspace layout.',
+    components: ['Sidebar', 'DashboardLayout', 'ArtifactFilter', 'DecisionCard', 'MarkdownViewer'],
   },
   {
     name: '05-team-directory',
     route: '/team',
     title: 'Team Directory & Spatial Presence Roster',
     description:
-      'Comprehensive organizational roster showing member roles, desk locations, live availability indicators, and direct one-click soft knock collaboration.',
-    components: ['Header', 'TeamCard', 'StatusBadge', 'KnockTrigger', 'KnockModal'],
+      'Comprehensive organizational roster showing member roles, desk locations, live availability indicators, and direct one-click soft knock collaboration inside the panel layout.',
+    components: ['Sidebar', 'DashboardLayout', 'TeamCard', 'StatusBadge', 'KnockTrigger', 'KnockModal'],
   },
   {
     name: '06-workspace-login',
