@@ -8,7 +8,6 @@ export interface OrganizationDetails {
   domain: string;
   settings: Record<string, any>;
   headquartersName: string;
-  campusName: string;
   activeFloorsCount: number;
   activeDesksCount: number;
   activeMembersCount: number;
@@ -52,7 +51,6 @@ export class OrganizationService {
           domain: org.domain,
           settings: org.settings || {},
           headquartersName: hqName,
-          campusName: hqName,
           activeFloorsCount: floorsRes.rows[0]?.count || 3,
           activeDesksCount: desksRes.rows[0]?.count || 5,
           activeMembersCount: usersRes.rows[0]?.count || 3,
@@ -68,7 +66,6 @@ export class OrganizationService {
       domain: 'squad.realnthq.local',
       settings: { max_floors: 10, media_topology: 'sfu' },
       headquartersName: 'RealntHQ Central Headquarters',
-      campusName: 'RealntHQ Central Headquarters',
       activeFloorsCount: 3,
       activeDesksCount: 5,
       activeMembersCount: 3,

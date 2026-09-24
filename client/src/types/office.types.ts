@@ -12,7 +12,7 @@ export interface UserProfile {
   focusRemainingMinutes?: number;
 }
 
-export type CampusWing = 'WEST' | 'CENTRAL' | 'EAST' | 'SOUTH';
+export type OfficeWing = 'WEST' | 'CENTRAL' | 'EAST' | 'SOUTH';
 
 export interface FloorInfo {
   id: string;
@@ -31,7 +31,7 @@ export interface DeskData {
   posX: number;
   posY: number;
   deskType: 'DEDICATED' | 'HOT_DESK';
-  wing?: CampusWing;
+  wing?: OfficeWing;
   currentOccupant?: UserProfile;
   assignedUser?: UserProfile;
   stickyNote?: string;
@@ -46,7 +46,7 @@ export interface RoomData {
   roomType: 'HUDDLE' | 'CONFERENCE' | 'WATERCOOLER' | 'WORKSHOP';
   capacity: number;
   occupantCount: number;
-  wing?: CampusWing;
+  wing?: OfficeWing;
   activeMeetingId?: string;
 }
 
