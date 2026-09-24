@@ -1,8 +1,8 @@
-# Vertical Spatial Campus Floor Plans
+# Spatial Office Canvas Plans (/office)
 
-REALNT HQ organizes enterprise campuses into a 7-level vertical hierarchy across 4 cardinal wings per floor. Each floor specializes in specific interaction patterns, density tolerances, and security boundaries.
+In REALNT HQ, spatial floor plans represent interactive 2D web canvas sectors accessible within the `/office` route. They provide spatial visual proximity for focused individual work, desk booking, and team clustering.
 
-For horizontal wing layouts, coordinate grids, and acoustic zoning, consult [VERTICAL_HORIZONTAL_HQ_MAPS.md](./VERTICAL_HORIZONTAL_HQ_MAPS.md).
+For the macro web platform architecture that connects all application routes (`/office`, `/rooms`, `/broadcasts`, `/standup`, `/team`), operational tiers, and real-time presence wayfinding, refer to the master [SEMANTIC_HQ_MAPS.md](./SEMANTIC_HQ_MAPS.md).
 
 ---
 
