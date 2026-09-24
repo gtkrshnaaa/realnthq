@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import { DashboardLayout } from '@/components/layout/dashboard_layout';
 import { ActiveHuddle } from '@/components/rooms/active_huddle';
+import { WhiteboardModal } from '@/components/rooms/whiteboard_modal';
 import { VideoIcon, MicIcon, UsersIcon } from '@/components/icons/icons';
-import { RoomData, UserProfile } from '@/types/office.types';
+import { RoomData, UserProfile, WhiteboardNote } from '@/types/office.types';
 
 export default function RoomsPage() {
   const [currentUser] = useState<UserProfile>({
@@ -51,6 +52,30 @@ export default function RoomsPage() {
   ]);
 
   const [activeRoom, setActiveRoom] = useState<RoomData | null>(null);
+  const [selectedWhiteboardRoom, setSelectedWhiteboardRoom] = useState<RoomData | null>(null);
+  const [roomNotes, setRoomNotes] = useState<WhiteboardNote[]>([
+    {
+      id: 'note-1',
+      roomId: 'room-1',
+      title: 'ADR-041: Spatial Quadtree Boundary Calculations',
+      content: 'Agreed on 100ms throttle interval for cursor position broadcasts and fallback to polling when client tab is hidden.\nAction items:\n- Benchmark SFU egress bandwidth\n- Write unit test for quadtree cell splitting',
+      authorName: 'Alex Vance',
+      updatedAt: 'Today, 10:15 AM',
+    },
+  ]);
+
+  const handleSaveWhiteboardNote = (note: Omit<WhiteboardNote, 'id' | 'updatedAt'>) => {
+    const newNote: WhiteboardNote = {
+      ...note,
+      id: `note-${Date.now()}`,
+      updatedAt: 'Just now',
+    };
+    setRoomNotes((prev) => [newNote, ...prev]);
+  };
+
+  const handleExportDecision = (note: WhiteboardNote) => {
+    // Exported note
+  };
 
   const getRoomBadgeColor = (type: string) => {
     switch (type) {
@@ -152,17 +177,26 @@ export default function RoomsPage() {
                     </span>
                   </div>
 
-                  <button
-                    onClick={() => setActiveRoom(room)}
-                    disabled={isFull}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${
-                      isFull
-                        ? 'bg-black/5 text-black/30 cursor-not-allowed'
-                        : 'bg-[#252724] hover:bg-[#3b3e39] text-white shadow-xs'
-                    }`}
-                  >
-                    {isFull ? 'Room Full' : 'Join Huddle'}
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedWhiteboardRoom(room)}
+                      className="px-3 py-1.5 rounded-xl border border-black/10 hover:border-black/25 text-[#252724] text-xs font-semibold bg-white transition-all shadow-2xs"
+                    >
+                      Scratchpad
+                    </button>
+                    <button
+                      onClick={() => setActiveRoom(room)}
+                      disabled={isFull}
+                      className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                        isFull
+                          ? 'bg-black/5 text-black/30 cursor-not-allowed'
+                          : 'bg-[#252724] hover:bg-[#3b3e39] text-white shadow-xs'
+                      }`}
+                    >
+                      {isFull ? 'Room Full' : 'Join Huddle'}
+                    </button>
+                  </div>
                 </div>
               </div>
             );
@@ -175,6 +209,19 @@ export default function RoomsPage() {
           room={activeRoom}
           currentUser={currentUser}
           onLeave={() => setActiveRoom(null)}
+        />
+      )}
+
+      {selectedWhiteboardRoom && (
+        <WhiteboardModal
+          isOpen={!!selectedWhiteboardRoom}
+          roomName={selectedWhiteboardRoom.name}
+          roomId={selectedWhiteboardRoom.id}
+          authorName={currentUser.fullName}
+          notes={roomNotes.filter((n) => n.roomId === selectedWhiteboardRoom.id)}
+          onClose={() => setSelectedWhiteboardRoom(null)}
+          onSaveNote={handleSaveWhiteboardNote}
+          onExportToDecisionLog={handleExportDecision}
         />
       )}
     </DashboardLayout>
