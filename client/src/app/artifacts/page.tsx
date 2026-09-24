@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Header } from '@/components/navigation/header';
+import { DashboardLayout } from '@/components/layout/dashboard_layout';
 import { UserProfile } from '@/types/office.types';
 
 interface RoomArtifact {
@@ -85,35 +85,43 @@ export default function ArtifactsPage() {
   };
 
   return (
-    <main className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
-      <Header currentUser={currentUser} activePath="/artifacts" />
-
-      <section className="bg-white/80 backdrop-blur-sm rounded-2xl border border-black/8 p-6 shadow-sm">
+    <DashboardLayout
+      activePath="/artifacts"
+      title="Decision Registers & Async Logs"
+      subtitle="Persistent room journals, architecture decisions, and team scratchpads"
+      badge="Async Audit Trail"
+      currentUser={currentUser}
+      actions={
+        <div className="flex items-center gap-1.5 p-1 bg-[#fbfbfa] rounded-xl border border-black/8 text-xs font-medium">
+          {['ALL', 'DECISION_LOG', 'STANDUP_NOTE', 'SCRATCHPAD'].map((t) => (
+            <button
+              key={t}
+              onClick={() => setFilter(t)}
+              className={`px-3 py-1.5 rounded-lg transition-all text-[11px] ${
+                filter === t
+                  ? 'bg-[#252724] text-white shadow-xs font-semibold'
+                  : 'text-[#252724]/70 hover:text-[#252724]'
+              }`}
+            >
+              {t.replace('_', ' ')}
+            </button>
+          ))}
+        </div>
+      }
+    >
+      <section className="bg-white rounded-2xl border border-black/8 p-6 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-black/8 gap-4">
           <div>
-            <h2 className="font-serif text-xl font-bold text-[#252724]">
-              Decision Registers & Async Work Artifacts
+            <h2 className="font-serif text-lg font-bold text-[#252724]">
+              Recorded Team Artifacts
             </h2>
             <p className="text-xs text-[#252724]/70 mt-0.5">
-              Persistent Meeting Records, Architecture Decisions, and Team Scratchpads
+              Knowledge records automatically preserved from collaborative spaces.
             </p>
           </div>
-
-          <div className="flex items-center gap-1.5 p-1 bg-[#fbfbfa] rounded-xl border border-black/8 text-xs font-medium">
-            {['ALL', 'DECISION_LOG', 'STANDUP_NOTE', 'SCRATCHPAD'].map((t) => (
-              <button
-                key={t}
-                onClick={() => setFilter(t)}
-                className={`px-3 py-1.5 rounded-lg transition-all text-[11px] ${
-                  filter === t
-                    ? 'bg-[#252724] text-white shadow-xs'
-                    : 'text-[#252724]/70 hover:text-[#252724]'
-                }`}
-              >
-                {t.replace('_', ' ')}
-              </button>
-            ))}
-          </div>
+          <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#eef2ec] text-[#5a8357]">
+            {filtered.length} Entries
+          </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
@@ -154,6 +162,6 @@ export default function ArtifactsPage() {
           ))}
         </div>
       </section>
-    </main>
+    </DashboardLayout>
   );
 }
