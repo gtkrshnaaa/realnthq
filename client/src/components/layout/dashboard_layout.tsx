@@ -74,7 +74,7 @@ export function DashboardLayout({
       {/* Main Workspace Panel */}
       <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
         {/* Mobile Top Bar */}
-        <header className="lg:hidden flex items-center justify-between px-4 py-3 bg-white border-b border-black/8 shrink-0">
+        <header className="lg:hidden h-16 px-4 bg-white border-b border-black/8 shrink-0 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <button
               type="button"
@@ -94,21 +94,21 @@ export function DashboardLayout({
         </header>
 
         {/* Desktop Context Top Bar */}
-        <div className="hidden lg:flex items-center justify-between px-6 py-4 bg-white/60 border-b border-black/8 backdrop-blur-xs shrink-0">
+        <div className="hidden lg:flex items-center justify-between h-16 px-6 bg-white/60 border-b border-black/8 backdrop-blur-xs shrink-0">
           <div className="flex items-center gap-3">
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="font-serif text-xl font-bold tracking-tight text-[#252724]">
+                <h1 className="font-serif text-lg font-bold tracking-tight text-[#252724] leading-tight">
                   {title}
                 </h1>
                 {badge && (
-                  <span className="px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357] text-[11px] font-medium border border-[#5a8357]/20">
+                  <span className="px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357] text-[10px] font-medium border border-[#5a8357]/20">
                     {badge}
                   </span>
                 )}
               </div>
               {subtitle && (
-                <p className="text-xs text-[#252724]/65 mt-0.5">
+                <p className="text-[11px] text-[#252724]/65 mt-0.5">
                   {subtitle}
                 </p>
               )}

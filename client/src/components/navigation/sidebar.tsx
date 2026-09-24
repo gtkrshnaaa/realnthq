@@ -65,25 +65,14 @@ export function Sidebar({
   return (
     <aside className="w-64 md:w-72 bg-white flex flex-col h-full border-r border-black/8 select-none">
       {/* Brand Header */}
-      <div className="p-5 border-b border-black/8">
-        <Link href="/" onClick={onNavigate} className="block group">
-          <div className="flex items-center gap-2">
-            <span className="font-serif text-2xl font-bold tracking-tight text-[#252724] group-hover:text-[#5a8357] transition-colors">
-              realnthq
-            </span>
-            <span className="px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357] text-[10px] font-mono tracking-tight border border-[#5a8357]/20">
-              v1.0
-            </span>
-          </div>
-          <div className="mt-2 flex items-center gap-1.5">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#5a8357]" />
-            <span className="text-xs font-semibold text-[#252724] truncate">
-              {orgName}
-            </span>
-          </div>
-          <p className="text-[11px] text-[#252724]/60 mt-0.5">
-            Self-Hosted Virtual Headquarters
-          </p>
+      <div className="h-16 px-5 border-b border-black/8 flex items-center shrink-0">
+        <Link href="/" onClick={onNavigate} className="flex items-center gap-2.5 group min-w-0">
+          <span className="font-serif text-xl font-bold tracking-tight text-[#252724] group-hover:text-[#5a8357] transition-colors shrink-0">
+            realnthq
+          </span>
+          <span className="px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357] text-[11px] font-medium truncate max-w-[130px] border border-[#5a8357]/20">
+            {orgName}
+          </span>
         </Link>
       </div>
 
