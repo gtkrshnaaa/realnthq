@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Header } from '@/components/navigation/header';
+import { DashboardLayout } from '@/components/layout/dashboard_layout';
 import { KnockModal } from '@/components/presence/knock_modal';
 import { HandRaisedIcon } from '@/components/icons/icons';
 import { UserProfile, KnockNotification } from '@/types/office.types';
@@ -85,22 +85,28 @@ export default function TeamPage() {
   };
 
   return (
-    <main className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
-      <Header currentUser={currentUser} activePath="/team" />
-
-      <section className="bg-white/80 backdrop-blur-sm rounded-2xl border border-black/8 p-6 shadow-sm">
+    <DashboardLayout
+      activePath="/team"
+      title="Team Directory & Presence Roster"
+      subtitle="Role-based workplace presence, spatial locations, and instant collaboration"
+      badge="Active Roster"
+      currentUser={currentUser}
+      actions={
+        <span className="px-3 py-1.5 rounded-xl bg-[#eef2ec] text-[#5a8357] text-xs font-mono font-semibold">
+          {teamMembers.length} Active Members
+        </span>
+      }
+    >
+      <section className="bg-white rounded-2xl border border-black/8 p-6 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-black/8 gap-4">
           <div>
-            <h2 className="font-serif text-xl font-bold text-[#252724]">
-              Team Directory & Organizational Roster
+            <h2 className="font-serif text-lg font-bold text-[#252724]">
+              Colleague Roster
             </h2>
             <p className="text-xs text-[#252724]/70 mt-0.5">
-              Role-Based Workplace Presence, Spatial Locations, and Instant Collaboration
+              Instant non-intrusive soft knocks mimic tapping a teammate on the shoulder.
             </p>
           </div>
-          <span className="px-3 py-1.5 rounded-xl bg-[#eef2ec] text-[#5a8357] text-xs font-mono">
-            {teamMembers.length} Active Members
-          </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
@@ -171,6 +177,6 @@ export default function TeamPage() {
           onRespondKnock={() => setTargetKnockUser(null)}
         />
       )}
-    </main>
+    </DashboardLayout>
   );
 }
