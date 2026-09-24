@@ -103,3 +103,19 @@ export function XMarkIcon({ className = 'w-5 h-5' }: { className?: string }) {
     </svg>
   );
 }
+
+export function MegaphoneIcon({ className = 'w-5 h-5' }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.45a13.626 13.626 0 01-1.338-3.924m3-9.4c1.878-.268 3.738-.67 5.56-1.196a.75.75 0 01.96 1.002 24.364 24.364 0 00-.73 9.77.75.75 0 01-.96 1.002 24.28 24.28 0 01-5.56-1.196m0-9.382v9.382" />
+    </svg>
+  );
+}
+
+export function BellIcon({ className = 'w-5 h-5' }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+    </svg>
+  );
+}
