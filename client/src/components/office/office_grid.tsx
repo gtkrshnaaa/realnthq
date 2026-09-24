@@ -23,7 +23,7 @@ export function OfficeGrid({
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-black/8 p-5 shadow-sm">
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-black/5">
         <div>
-          <h2 className="font-serif text-lg font-bold text-[#252724]">
+          <h2 className="text-lg font-bold tracking-tight text-[#252724]">
             {floorName}
           </h2>
           <p className="text-xs text-[#252724]/60">

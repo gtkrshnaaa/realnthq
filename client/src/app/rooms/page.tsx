@@ -95,7 +95,7 @@ export default function RoomsPage() {
       <section className="bg-white rounded-2xl border border-black/8 p-6 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-black/8 gap-4">
           <div>
-            <h2 className="font-serif text-lg font-bold text-[#252724]">
+            <h2 className="text-lg font-bold tracking-tight text-[#252724]">
               Available Meeting Rooms
             </h2>
             <p className="text-xs text-[#252724]/70 mt-0.5">
@@ -132,7 +132,7 @@ export default function RoomsPage() {
                     </div>
                   </div>
 
-                  <h3 className="font-serif text-base font-bold text-[#252724]">
+                  <h3 className="text-base font-bold tracking-tight text-[#252724]">
                     {room.name}
                   </h3>
                   <p className="text-xs text-[#252724]/60 mt-1">

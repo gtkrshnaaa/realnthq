@@ -13,7 +13,7 @@ export function RoomPanel({ rooms, onJoinRoom }: RoomPanelProps) {
       <div className="flex items-center justify-between mb-3 pb-2 border-b border-black/5">
         <div className="flex items-center gap-2">
           <VideoIcon className="w-4 h-4 text-[#252724]" />
-          <h3 className="font-serif text-sm font-bold text-[#252724]">
+          <h3 className="text-sm font-bold tracking-tight text-[#252724]">
             Meeting Spaces & Hubs
           </h3>
         </div>

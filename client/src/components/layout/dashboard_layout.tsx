@@ -100,7 +100,7 @@ export function DashboardLayout({
             >
               <MenuIcon className="w-5 h-5" />
             </button>
-            <Link href="/" className="font-serif text-lg font-bold text-[#252724]">
+            <Link href="/" className="text-lg font-extrabold tracking-tight text-[#252724]">
               realnthq
             </Link>
           </div>
@@ -124,7 +124,7 @@ export function DashboardLayout({
           <div className="flex items-center gap-3">
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="font-serif text-lg font-bold tracking-tight text-[#252724] leading-tight">
+                <h1 className="text-lg font-bold tracking-tight text-[#252724] leading-tight">
                   {title}
                 </h1>
                 {badge && (

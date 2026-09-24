@@ -21,7 +21,7 @@ export function ActiveHuddle({ room, currentUser, onLeave }: ActiveHuddleProps) 
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2.5 h-2.5 rounded-full bg-[#5a8357] animate-pulse" />
-            <h3 className="font-serif text-sm font-bold text-[#252724]">
+            <h3 className="text-sm font-bold tracking-tight text-[#252724]">
               Active Huddle: {room.name}
             </h3>
             <span className="px-2 py-0.5 rounded text-[10px] bg-[#eef2ec] text-[#5a8357] font-medium">

@@ -32,7 +32,7 @@ export default function LoginPage() {
           <div className="w-12 h-12 mx-auto rounded-2xl bg-[#252724] text-white flex items-center justify-center mb-3 shadow-xs">
             <BuildingIcon className="w-6 h-6" />
           </div>
-          <h1 className="font-serif text-2xl font-bold tracking-tight text-[#252724]">
+          <h1 className="text-2xl font-bold tracking-tight text-[#252724]">
             realnthq
           </h1>
           <p className="text-xs text-[#252724]/70 mt-1">

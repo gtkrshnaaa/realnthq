@@ -54,7 +54,7 @@ export function Header({
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <Link href="/" className="font-serif text-2xl font-bold tracking-tight text-[#252724] hover:opacity-90">
+            <Link href="/" className="text-2xl font-extrabold tracking-tight text-[#252724] hover:opacity-90">
               realnthq
             </Link>
             <span className="px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357] text-[11px] font-mono">

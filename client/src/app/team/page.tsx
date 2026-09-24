@@ -100,7 +100,7 @@ export default function TeamPage() {
       <section className="bg-white rounded-2xl border border-black/8 p-6 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-black/8 gap-4">
           <div>
-            <h2 className="font-serif text-lg font-bold text-[#252724]">
+            <h2 className="text-lg font-bold tracking-tight text-[#252724]">
               Colleague Roster
             </h2>
             <p className="text-xs text-[#252724]/70 mt-0.5">
@@ -131,7 +131,7 @@ export default function TeamPage() {
 
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-serif text-base font-bold text-[#252724]">
+                      <h3 className="text-base font-bold tracking-tight text-[#252724]">
                         {member.fullName}
                       </h3>
                       <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-black/5 text-[#252724]/70">

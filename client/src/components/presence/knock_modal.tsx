@@ -28,7 +28,7 @@ export function KnockModal({
               <HandRaisedIcon className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-serif text-lg font-bold text-[#252724]">
+              <h3 className="text-lg font-bold tracking-tight text-[#252724]">
                 Incoming Soft Knock
               </h3>
               <p className="text-xs text-[#252724]/70">
@@ -79,7 +79,7 @@ export function KnockModal({
               {targetUser.fullName.charAt(0)}
             </div>
             <div>
-              <h3 className="font-serif text-base font-bold text-[#252724]">
+              <h3 className="text-base font-bold tracking-tight text-[#252724]">
                 Knock on {targetUser.fullName}
               </h3>
               <p className="text-xs text-[#252724]/60">

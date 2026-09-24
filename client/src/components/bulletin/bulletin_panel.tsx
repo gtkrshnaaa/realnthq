@@ -95,7 +95,7 @@ export function BulletinPanel({ onClose }: BulletinPanelProps) {
             <MegaphoneIcon className="w-4 h-4" />
           </div>
           <div>
-            <h2 className="font-serif text-sm font-bold text-[#252724] leading-none">
+            <h2 className="text-sm font-bold tracking-tight text-[#252724] leading-none">
               Company Portal
             </h2>
             <p className="text-[10px] text-[#252724]/60 mt-0.5">
