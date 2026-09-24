@@ -31,7 +31,7 @@ REALNT HQ enforces a 4-tier security matrix governing spatial movement, interact
 
 ## 3. Presence Privacy & Knock Guardrails
 
-* **Ghost Mode**: Executive leaders (Tier 0 and selected Tier 1) can activate Ghost Mode to observe campus operational load without rendering an avatar or causing disruption.
+* **Ghost Mode**: Executive leaders (Tier 0 and selected Tier 1) can activate Ghost Mode to observe workspace operational load without rendering an avatar or causing disruption.
 * **Deep-Work Guard**: When a user activates a Pomodoro focus timer or occupies a Deep-Work Pod, incoming knocks from Tier 2 members are queued into their Desk Tray without ringing alerts. Tier 0 and Tier 1 leads can choose to bypass only under emergency flags.
 * **Confidential 1-on-1 Isolation**: HR and Executive 1-on-1 rooms automatically drop audio streams to external eavesdroppers and log zero ephemeral transcripts.
 

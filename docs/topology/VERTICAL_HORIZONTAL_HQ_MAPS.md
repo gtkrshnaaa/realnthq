@@ -1,4 +1,4 @@
-# Vertical & Horizontal HQ Campus Maps
+# Vertical & Horizontal HQ Workplace Maps
 
 REALNT HQ organizes enterprise headquarters into a continuous two-dimensional matrix: vertical elevation (7 floor levels) and horizontal zoning (4 cardinal wings per floor).
 
@@ -41,7 +41,7 @@ Every floor plan is partitioned into four horizontal wings surrounding a central
        │             CENTRAL CIRCULATION ATRIUM        │
        │   * Elevator Core & Express Stairwell         │
        │   * Standup Kiosk & Bulletin Wall             │
-       │   * Campus Wayfinding Terminal                │
+       │   * Headquarters Wayfinding Terminal          │
        ├───────────────────────────────────────────────┤
        │             SOUTH WING (COMMONS)              │
        │   * Watercooler Lounge & Casual Cafe          │
@@ -54,7 +54,7 @@ Every floor plan is partitioned into four horizontal wings surrounding a central
 
 ## 3. Spatial Coordinate Grid & Addressing Standard
 
-To eliminate ambiguity across large multi-thousand avatar campuses, every desk, room, and kiosk is addressed using a standardized URI token:
+To eliminate ambiguity across large multi-thousand avatar organizations, every desk, room, and kiosk is addressed using a standardized URI token:
 
 `REALNT://{floor_code}/{wing_code}/{zone_type}/{index}`
 

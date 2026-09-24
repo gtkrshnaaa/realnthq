@@ -6,7 +6,7 @@ For the macro web platform architecture that connects all application routes (`/
 
 ---
 
-## Campus Level Overview
+## Headquarters Elevation Overview
 
 | Level | Floor Designation | Primary Function | Max Concurrent Capacity | Default Privacy Level |
 | :--- | :--- | :--- | :--- | :--- |

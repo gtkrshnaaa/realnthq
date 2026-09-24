@@ -1,4 +1,4 @@
-# REALNT HQ: Enterprise Campus Topology & Organizational Blueprint
+# REALNT HQ: Enterprise Workplace Topology & Organizational Blueprint
 
 This directory documents the comprehensive organizational topology, spatial floor plans, role-based access control (RBAC), and scalability models supported by `REALNT HQ`.
 
@@ -11,7 +11,7 @@ While small startups often operate on a single floor, a true enterprise virtual 
 | Document | Focus & Scope |
 | :--- | :--- |
 | [ROLES_AND_DEPARTMENTS.md](./ROLES_AND_DEPARTMENTS.md) | Exhaustive taxonomy of 7 departments, 25+ functional roles, interaction rules, and privacy needs. |
-| [SPATIAL_FLOOR_PLANS.md](./SPATIAL_FLOOR_PLANS.md) | The 5-level vertical campus map, room taxonomy, spatial zoning, and acoustic boundaries. |
+| [SPATIAL_FLOOR_PLANS.md](./SPATIAL_FLOOR_PLANS.md) | The 5-level vertical workplace map, room taxonomy, spatial zoning, and acoustic boundaries. |
 | [RBAC_AND_PERMISSIONS.md](./RBAC_AND_PERMISSIONS.md) | 4-tier security matrix, spatial fencing, knock protocol enforcement, and audit logging. |
 | [SCALE_AND_CAPACITY.md](./SCALE_AND_CAPACITY.md) | Hardware sizing, socket quadtree bounds, SFU bandwidth models from 1 to 1,000+ concurrent members. |
 

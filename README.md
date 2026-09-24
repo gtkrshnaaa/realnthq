@@ -69,13 +69,13 @@ realnthq/
 
 ---
 
-## 4. Enterprise Campus Topology & Multi-Department Architecture
+## 4. Enterprise Workplace Topology & Multi-Department Architecture
 
 REALNT HQ scales across full enterprise organizations with diverse functional departments:
 * **7 Core Departments**: Executive Governance, Product & Engineering, Design & Research, Revenue (GTM), Marketing & Communications, Customer Operations, and People/HR.
-* **5-Level Vertical Campus**: Ground Commons/Auditorium (L1), Systems/Eng Hub (L2), Product/Design (L3), Revenue/Demo Hub (L4), and Executive Sanctum (L5).
+* **5-Level Vertical Headquarters**: Ground Commons/Auditorium (L1), Systems/Eng Hub (L2), Product/Design (L3), Revenue/Demo Hub (L4), and Executive Sanctum (L5).
 * **Comprehensive Blueprint**:
-  * [Campus Topology Overview](docs/topology/README.md)
+  * [Workplace Topology Overview](docs/topology/README.md)
   * [Roles & Departments Taxonomy](docs/topology/ROLES_AND_DEPARTMENTS.md)
   * [Spatial Floor Plans & Zone Taxonomy](docs/topology/SPATIAL_FLOOR_PLANS.md)
   * [Role-Based Access Control (RBAC) & Spatial Fencing](docs/topology/RBAC_AND_PERMISSIONS.md)

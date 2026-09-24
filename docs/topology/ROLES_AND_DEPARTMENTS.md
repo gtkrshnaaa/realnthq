@@ -10,7 +10,7 @@ REALNT HQ structures enterprise organizations across 7 distinct departments and 
 * **Operational Needs**: High-confidentiality governance, board sessions, investor pitches, performance reviews, and external legal audits.
 * **Spatial Configuration**:
   * Located primarily on Level 5 (Executive Sanctum).
-  * Equipped with "Ghost Mode" (viewing campus status without broadcasting presence).
+  * Equipped with "Ghost Mode" (viewing workspace status without broadcasting presence).
   * Direct access to encrypted boardrooms with disabled recording flags.
 
 ---
