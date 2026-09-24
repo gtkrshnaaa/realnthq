@@ -54,8 +54,9 @@ export function Header({
   ];
 
   return (
-    <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-4 border-b border-black/8">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+    <header className="flex flex-col lg:grid lg:grid-cols-[1fr_auto_1fr] items-start lg:items-center gap-4 pb-4 border-b border-black/8">
+      {/* Left: Brand Identity */}
+      <div className="flex items-center">
         <div>
           <div className="flex items-center gap-2">
             <Link href="/" className="text-2xl font-black tracking-tight text-[#252724] hover:opacity-90">
@@ -69,28 +70,30 @@ export function Header({
             Self-Hosted Virtual Office for Distributed Organizations
           </p>
         </div>
-
-        <nav className="flex items-center gap-1 p-1 bg-white/70 rounded-xl border border-black/8 text-xs font-medium">
-          {navItems.map((item) => {
-            const isActive = activePath === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`px-3 py-1.5 rounded-lg transition-all ${
-                  isActive
-                    ? 'bg-[#252724] text-white shadow-xs'
-                    : 'text-[#252724]/70 hover:text-[#252724] hover:bg-black/5'
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
       </div>
 
-      <div className="flex items-center gap-3">
+      {/* Center: Navigation Menu */}
+      <nav className="flex items-center gap-1 p-1 bg-white/70 rounded-xl border border-black/8 text-xs font-medium justify-self-center overflow-x-auto max-w-full">
+        {navItems.map((item) => {
+          const isActive = activePath === item.href;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-all ${
+                isActive
+                  ? 'bg-[#252724] text-white shadow-xs font-semibold'
+                  : 'text-[#252724]/70 hover:text-[#252724] hover:bg-black/5'
+              }`}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
+      </nav>
+
+      {/* Right: User Profile & Status */}
+      <div className="flex items-center gap-3 justify-self-end">
         {onUpdateStatus && (
           <StatusSelector
             currentStatus={currentUser.status}
@@ -100,12 +103,12 @@ export function Header({
         )}
         <Link
           href="/login"
-          className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-black/8 shadow-xs hover:border-black/20 transition-all"
+          className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-black/8 shadow-xs hover:border-black/20 transition-all shrink-0"
         >
           <div className="w-6 h-6 rounded-full bg-[#252724] text-white flex items-center justify-center text-xs font-semibold">
             {currentUser.fullName.charAt(0)}
           </div>
-          <span className="text-xs font-semibold text-[#252724]">
+          <span className="text-xs font-semibold text-[#252724] whitespace-nowrap">
             {currentUser.fullName}
           </span>
         </Link>
