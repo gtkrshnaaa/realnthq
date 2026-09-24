@@ -2,25 +2,25 @@
   {
     "fileName": "ARCHITECTURE.md",
     "title": "System Architecture and Technology Blueprint",
-    "bytes": 5547,
+    "bytes": 5551,
     "lines": 126
   },
   {
     "fileName": "CONTRIBUTING.md",
     "title": "Contribution Guidelines",
-    "bytes": 971,
+    "bytes": 992,
     "lines": 13
   },
   {
     "fileName": "PRD.md",
     "title": "Product Requirements Document (PRD)",
-    "bytes": 9675,
-    "lines": 147
+    "bytes": 9842,
+    "lines": 149
   },
   {
     "fileName": "RIGHT_AND_ANTI_PATTERNS.md",
     "title": "Explicit Flow Matrix: Right Patterns vs Anti-Patterns",
-    "bytes": 4897,
+    "bytes": 4918,
     "lines": 88
   },
   {

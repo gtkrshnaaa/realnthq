@@ -68,7 +68,21 @@ realnthq/
 
 ---
 
-## 4. Technology Stack
+## 4. Enterprise Campus Topology & Multi-Department Architecture
+
+REALNT HQ scales across full enterprise organizations with diverse functional departments:
+* **7 Core Departments**: Executive Governance, Product & Engineering, Design & Research, Revenue (GTM), Marketing & Communications, Customer Operations, and People/HR.
+* **5-Level Vertical Campus**: Ground Commons/Auditorium (L1), Systems/Eng Hub (L2), Product/Design (L3), Revenue/Demo Hub (L4), and Executive Sanctum (L5).
+* **Comprehensive Blueprint**:
+  * [Campus Topology Overview](docs/topology/README.md)
+  * [Roles & Departments Taxonomy](docs/topology/ROLES_AND_DEPARTMENTS.md)
+  * [Spatial Floor Plans & Zone Taxonomy](docs/topology/SPATIAL_FLOOR_PLANS.md)
+  * [Role-Based Access Control (RBAC) & Spatial Fencing](docs/topology/RBAC_AND_PERMISSIONS.md)
+  * [Scale, Capacity & Infrastructure Topologies](docs/topology/SCALE_AND_CAPACITY.md)
+
+---
+
+## 5. Technology Stack
 
 * **Frontend Client (`client/`)**: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, Lucide icons, Socket.IO client.
 * **Backend Server (`server/`)**: NestJS 11+, TypeScript, WebSockets Gateway, Class-Validator, PostgreSQL connection pool.
@@ -78,7 +92,7 @@ realnthq/
 
 ---
 
-## 5. Right Patterns vs. Anti-Patterns
+## 6. Right Patterns vs. Anti-Patterns
 
 | Domain | Right Flow (Standard) | Anti-Pattern (Prohibited) |
 | :--- | :--- | :--- |
@@ -92,7 +106,7 @@ For the complete specification, read [docs/RIGHT_AND_ANTI_PATTERNS.md](docs/RIGH
 
 ---
 
-## 6. Design System Baseline (Warm Editorial Light)
+## 7. Design System Baseline (Warm Editorial Light)
 
 `realnthq` applies the universal **Warm Editorial Light** aesthetic:
 * **Canvas**: `#fbfbfa` warm bone background with alternating organic cards.
@@ -105,7 +119,7 @@ For the complete specification, read [docs/RIGHT_AND_ANTI_PATTERNS.md](docs/RIGH
 
 ---
 
-## 7. Quickstart and Single-Enter Orchestration
+## 8. Quickstart and Single-Enter Orchestration
 
 ### Prerequisites
 * Docker and Docker Compose plugin installed
@@ -132,7 +146,7 @@ To reset local changes, pull latest branch updates, and restart services:
 
 ---
 
-## 8. Automated Testing and Verification
+## 9. Automated Testing and Verification
 
 Run the unified test runner:
 ```bash
@@ -148,7 +162,7 @@ npm run test:e2e          # Puppeteer browser automation tests
 
 ---
 
-## 9. Visual Documentation and Operational Utilities
+## 10. Visual Documentation and Operational Utilities
 
 ### Visual Interface Previews
 * **Allpages Interface Catalogue**: Complete high-fidelity 1920x1080 visual index for all application routes: [docs/preview/allpages.md](docs/preview/allpages.md).
@@ -170,7 +184,7 @@ npm run test:e2e          # Puppeteer browser automation tests
 
 ---
 
-## 10. Contributing and Community Standards
+## 11. Contributing and Community Standards
 
 We welcome contributions from engineers worldwide. To maintain high code quality and architectural integrity:
 
@@ -182,6 +196,6 @@ We welcome contributions from engineers worldwide. To maintain high code quality
 
 ---
 
-## 11. License
+## 12. License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

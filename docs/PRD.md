@@ -30,6 +30,8 @@ Remote work often degrades into either endless calendar fatigue (constant Zoom/M
 | **Tier 2: Mid** | 15 - 150 members | Multi-department floors, scheduled rooms, focus pods | Single Selective Forwarding Unit (SFU) | Redis Pub/Sub + PostgreSQL |
 | **Tier 3: Enterprise** | 150 - 10,000+ | Multi-floor headquarters, custom zones, tenant isolation | Clustered Mediasoup/LiveKit SFUs | Distributed Redis Cluster + Sharded Postgres |
 
+For complete enterprise campus maps, floor zone layouts, and role taxonomies, read the [Enterprise Campus Topology Blueprint](topology/README.md).
+
 ---
 
 ## 3. Explicit Right Patterns and Flows
