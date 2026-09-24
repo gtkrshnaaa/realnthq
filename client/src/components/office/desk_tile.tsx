@@ -7,6 +7,7 @@ interface DeskTileProps {
   onClaimDesk: (deskId: string) => void;
   onReleaseDesk: (deskId: string) => void;
   onKnockUser: (user: UserProfile) => void;
+  onOpenNote?: (desk: DeskData) => void;
 }
 
 export function DeskTile({
@@ -15,6 +16,7 @@ export function DeskTile({
   onClaimDesk,
   onReleaseDesk,
   onKnockUser,
+  onOpenNote,
 }: DeskTileProps) {
   const isOccupiedByMe = desk.currentOccupant?.id === currentUser.id;
   const isOccupiedByOther = desk.currentOccupant && !isOccupiedByMe;
@@ -61,6 +63,17 @@ export function DeskTile({
             </div>
           </div>
 
+          {desk.stickyNote && (
+            <div
+              onClick={() => onOpenNote?.(desk)}
+              className="mt-1.5 px-2 py-1 rounded-lg bg-[#fcfaf2] border border-[#eedebb] text-[10px] text-[#5e4b21] truncate cursor-pointer hover:border-[#d8c292] transition-colors"
+              title={desk.stickyNote}
+            >
+              <span className="font-semibold mr-1 text-[9px] uppercase tracking-wider">Note:</span>
+              {desk.stickyNote}
+            </div>
+          )}
+
           <div className="flex items-center justify-between mt-2 pt-2 border-t border-black/5">
             <span
               className={`inline-flex items-center gap-1 text-[10px] font-medium ${
@@ -72,16 +85,28 @@ export function DeskTile({
               }`}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-current" />
-              {desk.currentOccupant.status}
+              {desk.currentOccupant.status === 'DEEP_WORK' && desk.currentOccupant.focusRemainingMinutes
+                ? `Focus (${desk.currentOccupant.focusRemainingMinutes}m)`
+                : desk.currentOccupant.status}
             </span>
 
             {isOccupiedByMe ? (
-              <button
-                onClick={() => onReleaseDesk(desk.id)}
-                className="text-[10px] text-red-600 hover:text-red-700 font-medium"
-              >
-                Leave
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => onOpenNote?.(desk)}
+                  className="text-[10px] text-[#252724]/60 hover:text-[#252724] font-medium"
+                >
+                  {desk.stickyNote ? 'Edit Note' : 'Add Note'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onReleaseDesk(desk.id)}
+                  className="text-[10px] text-red-600 hover:text-red-700 font-medium"
+                >
+                  Leave
+                </button>
+              </div>
             ) : (
               <button
                 onClick={() => onKnockUser(desk.currentOccupant!)}
