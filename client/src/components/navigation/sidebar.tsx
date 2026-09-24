@@ -8,9 +8,8 @@ import {
   DocumentTextIcon,
   UsersIcon,
   HomeIcon,
-  LogOutIcon,
 } from '@/components/icons/icons';
-import { StatusSelector } from '@/components/presence/status_selector';
+import { SidebarFooter } from './sidebar_footer';
 import { UserProfile, UserPresenceStatus } from '@/types/office.types';
 
 interface SidebarProps {
@@ -66,12 +65,9 @@ export function Sidebar({
     <aside className="w-64 md:w-72 bg-white flex flex-col h-full border-r border-black/8 select-none">
       {/* Brand Header */}
       <div className="h-16 px-5 border-b border-black/8 flex items-center shrink-0">
-        <Link href="/" onClick={onNavigate} className="flex items-center gap-2.5 group min-w-0">
-          <span className="text-xl font-extrabold tracking-tight text-[#252724] group-hover:text-[#5a8357] transition-colors shrink-0">
-            realnthq
-          </span>
-          <span className="px-2 py-0.5 rounded-md bg-[#eef2ec] text-[#5a8357] text-[11px] font-medium truncate max-w-[130px] border border-[#5a8357]/20">
-            {orgName}
+        <Link href="/" onClick={onNavigate} className="flex items-center group min-w-0">
+          <span className="text-lg font-black tracking-tight text-[#252724] group-hover:text-[#5a8357] transition-colors shrink-0">
+            REALNT HQ
           </span>
         </Link>
       </div>
@@ -140,44 +136,11 @@ export function Sidebar({
       </div>
 
       {/* User Footer Panel */}
-      <div className="p-3.5 border-t border-black/8 bg-[#fbfbfa]/70 space-y-3">
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-8 h-8 rounded-full bg-[#252724] text-white flex items-center justify-center text-xs font-bold shrink-0">
-              {currentUser.fullName
-                .split(' ')
-                .map((n) => n[0])
-                .join('')}
-            </div>
-            <div className="min-w-0">
-              <p className="text-xs font-semibold text-[#252724] truncate">
-                {currentUser.fullName}
-              </p>
-              <p className="text-[10px] text-[#252724]/60 truncate">
-                {currentUser.displayTitle || 'Team Member'}
-              </p>
-            </div>
-          </div>
-
-          <Link
-            href="/login"
-            title="Sign Out"
-            className="p-1.5 rounded-lg text-[#252724]/60 hover:text-[#252724] hover:bg-black/5 transition-colors"
-          >
-            <LogOutIcon className="w-4 h-4" />
-          </Link>
-        </div>
-
-        {onUpdateStatus && (
-          <div className="pt-1">
-            <StatusSelector
-              currentStatus={currentUser.status}
-              statusMessage={currentUser.statusMessage}
-              onUpdateStatus={onUpdateStatus}
-            />
-          </div>
-        )}
-      </div>
+      <SidebarFooter
+        currentUser={currentUser}
+        organizationName={orgName}
+        onUpdateStatus={onUpdateStatus}
+      />
     </aside>
   );
 }

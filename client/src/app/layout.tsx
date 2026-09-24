@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'realnthq - Open Source Scalable Virtual Office',
+  title: 'REALNT HQ - Open Source Scalable Virtual Office',
   description: 'Adaptive virtual office platform supporting low scale to high scale remote organizations.',
 };
 

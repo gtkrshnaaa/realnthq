@@ -100,8 +100,8 @@ export function DashboardLayout({
             >
               <MenuIcon className="w-5 h-5" />
             </button>
-            <Link href="/" className="text-lg font-extrabold tracking-tight text-[#252724]">
-              realnthq
+            <Link href="/" className="text-lg font-black tracking-tight text-[#252724]">
+              REALNT HQ
             </Link>
           </div>
           <div className="flex items-center gap-2">
