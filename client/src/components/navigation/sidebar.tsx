@@ -8,7 +8,11 @@ import {
   DocumentTextIcon,
   UsersIcon,
   HomeIcon,
+  RadioIcon,
+  BuildingIcon,
+  LayersIcon,
 } from '@/components/icons/icons';
+import { ClipboardCheckIcon } from '@/components/icons/extended_icons';
 import { SidebarFooter } from './sidebar_footer';
 import { UserProfile, UserPresenceStatus } from '@/types/office.types';
 
@@ -57,8 +61,12 @@ export function Sidebar({
   const navItems = [
     { label: 'Office Grid', href: '/office', icon: GridIcon, badge: 'L2' },
     { label: 'Meeting Rooms', href: '/rooms', icon: VideoIcon, badge: '4' },
-    { label: 'Decision Logs', href: '/artifacts', icon: DocumentTextIcon },
+    { label: 'Townhall Stage', href: '/broadcasts', icon: RadioIcon, badge: 'Live' },
+    { label: 'Daily Standup', href: '/standup', icon: ClipboardCheckIcon },
     { label: 'Team Roster', href: '/team', icon: UsersIcon, badge: '6' },
+    { label: 'Decision Logs', href: '/artifacts', icon: DocumentTextIcon },
+    { label: 'Operations Telemetry', href: '/telemetry', icon: LayersIcon },
+    { label: 'Guest Reception', href: '/lobby', icon: BuildingIcon },
   ];
 
   return (

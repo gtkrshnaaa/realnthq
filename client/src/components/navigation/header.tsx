@@ -45,8 +45,12 @@ export function Header({
     { label: 'Overview', href: '/' },
     { label: 'Office Grid', href: '/office' },
     { label: 'Meeting Rooms', href: '/rooms' },
-    { label: 'Decision Logs', href: '/artifacts' },
+    { label: 'Townhall Stage', href: '/broadcasts' },
+    { label: 'Daily Standup', href: '/standup' },
     { label: 'Team Roster', href: '/team' },
+    { label: 'Decision Logs', href: '/artifacts' },
+    { label: 'Telemetry', href: '/telemetry' },
+    { label: 'Guest Lobby', href: '/lobby' },
   ];
 
   return (
